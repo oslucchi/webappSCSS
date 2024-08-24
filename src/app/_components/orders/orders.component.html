@@ -1,27 +1,26 @@
 <div class="header">
     <table>
         <tr>
-            <td style='border: 1px solid black; vertical-align: top;'>
+            <td style='width: 33%; border: 1px solid black; vertical-align: top;'>
                 <p style='text-align: center; font-weight:bold'>
                     FILTRI SELEZIONE ORDINE<br>
                     Valore totale ordini selezionati {{ invoiceValue | spacedCurrency : 'EUR' : true : '1.0-2' }}
                 </p>
                 <table>
                     <tr>
-                        <th style='width: 150px;'>
+                        <th style='width: 180px;'>
                             ORDINI
                         </th>
-                        <th style='width: 150px;'>
+                        <th style='width: 180px;'>
                             PREPARAZIONE
                         </th>
-                        <th style='width: 150px;'>
+                        <th style='width: 180px;'>
                             SPEDIZIONE
                         </th>
                     </tr>
                     <tr>
                         <td>
-                            <mat-checkbox class="mat-label-small"
-                                          labelPosition="after" id='SYS'[(ngModel)]="profile.filters.filterOrders[0]"
+                            <mat-checkbox labelPosition="after" id='SYS'[(ngModel)]="profile.filters.filterOrders[0]"
                                           [checked]="profile.filters.filterOrders[0]"
                                           (change)="changeProfileFilters($event)">
                                 A sistema
@@ -104,8 +103,8 @@
                     </tr>
                     <tr>
                         <td colspan="3">
-                            <mat-form-field appearance="fill" [style.width.px]=100>
-                                <mat-label>Cliente: </mat-label>
+                            <mat-form-field appearance="fill" style="width:100px">
+                                <mat-label style="font-size: 12px;">Cliente: </mat-label>
                                 <input matInput
                                         id="searchFilterCustomer"
                                         [(ngModel)]="additionalSearchFilter.customer"
@@ -114,8 +113,8 @@
                                         type="text" style='font-size: small;' >
                             </mat-form-field>
                             &nbsp;
-                            <mat-form-field appearance="fill" [style.width.px]=70>
-                                <mat-label>Ordine: </mat-label>
+                            <mat-form-field appearance="fill" style="width:100px">
+                                <mat-label style="font-size: 12px;">Ordine: </mat-label>
                                 <input matInput
                                         matInputNumeric
                                         id="searchFilterOrder"
@@ -126,8 +125,8 @@
                                         type="text" style='font-size: small;' >
                             </mat-form-field>            
                             &nbsp;
-                            <mat-form-field appearance="fill" [style.width.px]=110>
-                                <mat-label>Da data: </mat-label>
+                            <mat-form-field appearance="fill" style="width:150px">
+                                <mat-label style="font-size: 12px;">Da data: </mat-label>
                                 <input matInput 
                                     [matDatepicker]="searchFilterFromDate" 
                                     [(ngModel)]="additionalSearchFilter.fromDate"
@@ -137,8 +136,8 @@
                                 <mat-datepicker #searchFilterFromDate></mat-datepicker>
                             </mat-form-field>
                             &nbsp;
-                            <mat-form-field appearance="fill" [style.width.px]=110>
-                                <mat-label>A data: </mat-label>
+                            <mat-form-field appearance="fill" style="width:150px">
+                                <mat-label style="font-size: 12px;">A data: </mat-label>
                                 <input matInput 
                                     [matDatepicker]="searchFilterToDate" 
                                     [(ngModel)]="additionalSearchFilter.toDate"
@@ -151,7 +150,7 @@
                     </tr>
                 </table>
             </td>
-            <td style='border: 1px solid black; vertical-align: top;'>
+            <td style='width: 42%; border: 1px solid black; vertical-align: top;'>
                 <app-order-handler [orderHandler]="orderHandler"
                                    [orderList]="orderList" 
                                    [orderDetails]="orderDetails"
@@ -162,8 +161,8 @@
                                    (resetOrderStatus)="resetOrderStatus($event)" >
                 </app-order-handler>
             </td>
-            <td style='border: 1px solid black; vertical-align: top;'>
-                <app-chat (onOrderChanged)="changeOnlyIfDisplayed($event)"></app-chat>
+            <td style='width: 25%; height: 100%; border: 1px solid black; vertical-align: top;'>
+                <app-chat style="height: 100%!important" (onOrderChanged)="changeOnlyIfDisplayed($event)"></app-chat>
             </td>
         </tr>
     </table>
@@ -172,11 +171,11 @@
 <div class="orderDetails">
     <table style='width:100%;'>
         <tr>
-            <td width='60%' valign='top'>
+            <td width='59%' valign='top'>
                 <div>
                     <mat-table [dataSource]="bogusDataSource" id="orders" matSort style="max-width: 99%;">
                         <ng-container matColumnDef="status">
-                            <mat-header-cell class="mat-column-status-hdr" *matHeaderCellDef mat-sort-header>St</mat-header-cell>
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>St</mat-header-cell>
                             <mat-cell class="mat-column-status" *matCellDef="let order">{{order.status}}</mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="forwarder">
@@ -319,14 +318,12 @@
                                 {{ empty }}
                             </mat-cell>
                         </ng-container>
-<!--
-                        <mat-header-row *matHeaderRowDef="getOrdersDisplayedColumns();" [style.min-height]="0" [style.max-height]="0"></mat-header-row>
--->
                         <mat-row *matRowDef="let row; columns: getOrdersDisplayedColumns()" (click)="listOrderDetails(row)"></mat-row>
                     </mat-table>
                 </div>
             </td>
-            <td width='40%' valign='top'>
+            <td width='2%' valign='top'> &nbsp; </td>
+            <td width='39%' valign='top'>
                 <div style='max-height:500px; min-height:500px; overflow-y:auto'>
                     <mat-table [dataSource]="dataSourceDetails" id="orderDetails">
                         <ng-container matColumnDef="articleRefERP">

@@ -18,11 +18,15 @@ html, body {
     min-height:70%;
     flex-grow: 1;
 }
-/* 
+
 table {
     font-family: Sans-Serif;
     font-size: 11px;
     border-spacing: 0 1px; 
+}
+
+.mat-cb-label-small {
+    font-size: 6px;
 }
 
 .mat-table {
@@ -42,8 +46,30 @@ table {
     font-size: 11px;
 }
 
+.mat-mdc-header-cell {
+    font-size: 11px;
+    color: blue;
+}
+
+
+.mat-mdc-row {
+    font-size: 9px;
+}
+
+.mat-mdc-row:nth-child(odd) {
+    background-color:#FDFDFB;
+}
+
+.mat-mdc-row:nth-child(even) {
+    background-color:rgba(126, 123, 123, 0.062);
+}
+
+.mat-mdc-row:hover{
+    background-color: #87CEEB !important;
+}
+
 .mat-row:nth-child(even){
-  background-color:rgba(126, 123, 123, 0.062);
+    background-color:rgba(126, 123, 123, 0.062);
 }
 
 .mat-row:nth-child(odd){
@@ -53,16 +79,11 @@ table {
 .mat-column {
     font-size: 11px
 }
-*/
-.mat-column-status-hdr {
-    flex: 0 0 6% !important;
-    color: blue;
-}
 
 .mat-column-status {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 6% !important;
+    flex: 0 0 7% !important;
     overflow-wrap: break-word;
     word-break: break-word;
     -ms-hyphens: auto;
@@ -70,12 +91,11 @@ table {
     -webkit-hyphens: auto;
     hyphens: auto;
 }
-/*
+
 .mat-column-forwarder {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 5% !important;
-    width: 5% !important;
+    flex: 0 0 7% !important;
     overflow-wrap: break-word;
     word-break: break-word;
     -ms-hyphens: auto;
@@ -258,8 +278,8 @@ table {
 .mat-column-compositionBoards {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 4% !important;
-    width: 4% !important;
+    flex: 0 0 5% !important;
+    width: 5% !important;
     overflow-wrap: break-word;
   
     word-break: break-word;
@@ -275,8 +295,8 @@ table {
 .mat-column-compositionTrays {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 4% !important;
-    width: 4% !important;
+    flex: 0 0 5% !important;
+    width: 5% !important;
     overflow-wrap: break-word;
   
     word-break: break-word;
@@ -292,8 +312,8 @@ table {
 .mat-column-compositionDesign {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 4% !important;
-    width: 4% !important;
+    flex: 0 0 5% !important;
+    width: 5% !important;
     overflow-wrap: break-word;
 
     word-break: break-word;
@@ -309,8 +329,8 @@ table {
 .mat-column-compositionAccessories {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 4% !important;
-    width: 4% !important;
+    flex: 0 0 5% !important;
+    width: 5% !important;
     overflow-wrap: break-word;
   
     word-break: break-word;
@@ -324,8 +344,8 @@ table {
 }
 
 .highlightBoards {
-    flex: 0 0 4% !important;
-    width: 4% !important;
+    flex: 0 0 5% !important;
+    width: 5% !important;
     background: green;
     color: white;
     text-align: center;
@@ -334,8 +354,8 @@ table {
 }
 
 .highlightTrays {
-    flex: 0 0 4% !important;
-    width: 4% !important;
+    flex: 0 0 5% !important;
+    width: 5% !important;
     background: red; 
     color: white;
     text-align: center;
@@ -344,8 +364,8 @@ table {
 }
 
 .highlightDesign {
-    flex: 0 0 4% !important;
-    width: 4% !important;
+    flex: 0 0 5% !important;
+    width: 5% !important;
     background: blue;
     color: white;
     text-align: center;
@@ -354,8 +374,8 @@ table {
 }
 
 .highlightAccessories {
-    flex: 0 0 4% !important;
-    width: 4% !important;
+    flex: 0 0 5% !important;
+    width: 5% !important;
     background: yellow;
     color: black;
     text-align: center;
@@ -409,8 +429,8 @@ table {
 .mat-column-piecesFromSqm {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 8% !important;
-    width: 8% !important;
+    flex: 0 0 9% !important;
+    width: 9% !important;
     overflow-wrap: break-word;
     word-wrap: break-word;
   
@@ -447,8 +467,8 @@ table {
   .mat-column-articleUnityOfMeasure {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 6% !important;
-    width: 6% !important;
+    flex: 0 0 8% !important;
+    width: 8% !important;
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word;
@@ -459,4 +479,3 @@ table {
     text-align: center;
     justify-content: flex-end;
 }
-*/

@@ -21,7 +21,7 @@ export class ChatComponent implements OnInit {
   private ws: WebSocket | undefined;
   public msg: Message = new Message();
   public textarea: string = "";
-  public msgType: number = Message.MSG_BROADCAST;
+  public msgType: number = Message.MSG_PRIVATE;
   public userList: User[] = new Array();
   public logged: boolean = false;
   public name: string = "";

@@ -4,44 +4,46 @@
     <button (click)="logon()">Logon</button>
 </div>
 <div *ngIf="logged">
-    <mat-label style='text-align: center;'>Utente: {{ name }}</mat-label>
-    <br>
-<!--
-    <textarea id="output" readonly>{{ textarea }}</textarea>
--->
-    <div #scrollMe id='output' [scrollTop]="scrollMe.scrollHeight" [innerHTML]="textarea"></div>
-    <br>
-    <mat-form-field appearance="fill">
-        <mat-label>Tipo msg</mat-label>
-        <mat-select [(ngModel)]="msgType">
-            <div *ngFor="let item of msgTypeList;" >
-                <mat-option [value]="item.id" [disabled]="item.disabled" >{{ item.des }}</mat-option>
-            </div>
-        </mat-select>
-    </mat-form-field>
-    &nbsp;
-    <mat-form-field *ngIf="msgType==4" appearance="fill">
-        <mat-label>Utenti in linea</mat-label>
-        <mat-select id="userList" 
-                    [(ngModel)]="tokenSelected" 
-                    (selectionChange)="setSelected($event)">
-            <div *ngFor="let u of userList;" >
-                <mat-option [value]="u.token">{{ u.account }}</mat-option>
-            </div>
-        </mat-select>
-    </mat-form-field>
-    <br>
     <div>
-        Messaggio:
-        <input type="text" id="input" [(ngModel)]="msg.text">
-        &nbsp;
-        <button (click)="sendMsg()" [disabled]="!connectionStatus">Send</button>
+        <mat-label style='font-size:14px;'>Utente: {{ name }}</mat-label>
+        <div #scrollMe style='height: 200px;' [scrollTop]="scrollMe.scrollHeight" [innerHTML]="textarea"></div>
     </div>
+    <div >
+        <div >
+            <mat-form-field style="width: 40%;" appearance="fill">
+                <mat-label style="font-size: 12px;">Tipo msg</mat-label>
+                <mat-select style="font-size: 12px;" [(ngModel)]="msgType">
+                    <div *ngFor="let item of msgTypeList;" >
+                        <mat-option [value]="item.id" [disabled]="item.disabled" >{{ item.des }}</mat-option>
+                    </div>
+                </mat-select>
+            </mat-form-field>
+            &nbsp;
+            <mat-form-field style="width: 40%;" *ngIf="msgType==4" appearance="fill">
+                <mat-label style="font-size: 12px;">Utenti in linea</mat-label>
+                <mat-select style="font-size: 12px;" id="userList" 
+                            [(ngModel)]="tokenSelected" 
+                            (selectionChange)="setSelected($event)">
+                    <div *ngFor="let u of userList;" >
+                        <mat-option [value]="u.token">{{ u.account }}</mat-option>
+                    </div>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div>
+            Messaggio:
+            <input style="width: 65%" type="text" id="input" [(ngModel)]="msg.text">
+            &nbsp;
+            <button (click)="sendMsg()" [disabled]="!connectionStatus">Send</button>
+        </div>
+    </div>
+
+    <!--
     <app-auto-refresh
         (TimerExpired)="keepAlive()" 
         [timerSet]="timerSet" 
         [(timerReset)]="timerReset"
         [hidden]="true">
-    </app-auto-refresh
-        >
+    </app-auto-refresh>
+    -->
 </div>

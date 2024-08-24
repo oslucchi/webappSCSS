@@ -5,7 +5,7 @@ textarea {
     resize: none;
     background-color: #ffffff;
 }
-
+/*
 div#output {
     max-width: 475px;
     min-height: 140px;
@@ -16,6 +16,32 @@ div#output {
     white-space: pre-wrap;
     font-size: 14px;
 }
+*/
+.div-main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+}
+
+.div-user {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: wrap;
+    resize: none;
+    white-space: pre-wrap;
+    font-size: 12px;
+}
+
+.div-message {
+    flex: 1;
+    font-size: 12px;
+    background: green;
+    position: sticky;
+    top: 300;
+    left: 0;
+    right: 0;   
+}
 
 input {
     width: 300px;
@@ -23,12 +49,15 @@ input {
 
 .redStatement {
     color: red;
+    font-size: 12px;
 }
 
 .greenStatement {
     color: green;
+    font-size: 12px;
 }
 
 .blueStatement {
     color: blue;
+    font-size: 12px;
 }

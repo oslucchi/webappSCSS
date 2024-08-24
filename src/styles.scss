@@ -1,10 +1,65 @@
 @use '@angular/material' as mat;
 
-/* You can add global styles to this file, and also import other style files */
-$custom-typography: mat.define-typography-config(
-    $font-family: 'UnifrakturCook'
-);
 
-@include mat.core();
+/* You can add global styles to this file, and also import other style files */
+@include mat.core(); 
+
 
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+.orderMngr {
+    .mat-mdc-floating-label{
+        color: green;
+        font-size: 8px;
+    }
+    .mat-mdc-floating-label--float-above{
+       color:  green;
+       font-size: 8px;
+    }
+    .mat-mdc-floating-label-label--shake{
+       color:  green;
+       font-size: 8px;
+    }
+
+    .mat-pseudo-checkbox-checked {
+        background-color: #CF5F5FEE;
+    }
+
+    .mat-checkbox-frame {
+        border-radius: 0 !important;
+    }
+
+    .mat-checkbox-checked,
+    .mat-checkbox-indeterminate {
+        .mat-checkbox-background {
+            background-color: #CF5F5FEE;
+            border-radius: 0 !important;
+        }
+    }
+
+    .mat-mdc-checkbox {
+        label {
+            cursor: pointer;
+            font-size: 10px;
+        }
+        --mdc-checkbox-selected-checkmark-color: #ffffff;
+        --mdc-checkbox-selected-icon-color: #CF5F5FEE;
+        --mdc-checkbox-selected-focus-icon-color: #CF5F5FEE;
+        --mdc-checkbox-selected-hover-icon-color: #CF5F5FEE;
+        --mdc-checkbox-selected-pressed-icon-color: #CF5F5FEE;
+        --mdc-checkbox-state-layer-size: 0;
+        --mdc-checkbox-unselected-focus-state-layer-opacity: 0;
+
+        &.mat-mdc-checkbox-disabled {
+            .mdc-checkbox {
+                .mdc-checkbox__background {
+                    --mdc-checkbox-disabled-selected-icon-color: transparent;
+                }
+            }
+        }
+
+        .mdc-form-field {
+            --mdc-typography-body2-letter-spacing: normal;
+        }
+    }
+}

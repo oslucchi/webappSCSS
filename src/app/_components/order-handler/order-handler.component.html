@@ -37,7 +37,7 @@
                         Approntamento
                     </td>
                     <td>
-                        <mat-form-field style='width: 100px'>
+                        <mat-form-field style='width: 150px; font-size: 12px;'>
                             <input matInput 
                                     [matDatepicker]="requestedAssemblyDate" 
                                     [(ngModel)]="orderHandler.details.requestedAssemblyDate"
@@ -48,29 +48,6 @@
                         </mat-form-field>
                     </td>
                 </tr>
-                <tr style='text-align: left;'>
-                    <td style='size:50%'>
-                        <!-- <mat-label>Statistiche</mat-label> -->
-                        Statistiche
-                    </td>
-                    <td>
-                        <mat-form-field appearance="fill" style="width:45px !important; text-align: right;">
-                            <mat-label>Aut</mat-label>
-                            <input matInput id="assemblyTimeAuto"
-                                    [(ngModel)]="orderHandler.details.assemblyTimeAuto" 
-                                    maxlength="3"
-                                    disabled>
-                        </mat-form-field>
-                        &nbsp;
-                        <mat-form-field appearance="fill" style="width:45px !important; text-align: right;">
-                            <mat-label>Man</mat-label>
-                            <input matInput id="assemblyTime"
-                                    [(ngModel)]="orderHandler.details.assemblyTime" 
-                                    (change)="onAttributeChange($event)"
-                                    maxlength="3">
-                        </mat-form-field>
-                    </td>
-                </tr>
             </table>
         </td>
     </tr>
@@ -78,7 +55,7 @@
         <td>
             <mat-form-field appearance="fill">
                 <mat-label>Stato</mat-label>
-                <mat-select 
+                <mat-select style="font-size: 12px;"
                         [(ngModel)]="orderHandler.details.status"
                         (selectionChange)="onOrderStatusChange($event)">
                     <div *ngFor="let item of status;" >
@@ -90,7 +67,8 @@
         <td>
             <mat-form-field appearance="fill">
                 <mat-label>Vettore</mat-label>
-                <mat-select id="forwarder"
+                <mat-select style="font-size: 12px;"
+                            id="forwarder"
                             [(ngModel)]="orderHandler.details.forwarder" 
                             (selectionChange)="onAttributeChange($event)">
                     <div *ngFor="let item of forwarder;" >
@@ -101,10 +79,10 @@
         </td>
         <td colspan="2">
             <mat-form-field appearance="fill" rows="1" style="width: 320px !important">
-                <mat-label style='font-size: 11px;'>Note</mat-label>
+                <mat-label>Note</mat-label>
                 <textarea matInput [(ngModel)]="orderHandler.note.note" 
                                 (change)="onOrderNoteChange($event)"
-                                style="line-height: 17px !important;max-height: 17px !important; resize: none">
+                                style="line-height: 17px !important;max-height: 17px !important; resize: none; font-size: 12px;">
                 </textarea>
             </mat-form-field>
         </td>
@@ -327,6 +305,28 @@
                             </span>
                         </div>
                         &nbsp;
+                    </td>
+                </tr>
+                <tr style='text-align: left;'>
+                    <td style='size:50%'>
+                        Statistiche
+                    </td>
+                    <td>
+                        <mat-form-field appearance="fill" style="width:75px !important; text-align: right; font-size: 12px">
+                            <mat-label>Aut</mat-label>
+                            <input matInput id="assemblyTimeAuto"
+                                    [(ngModel)]="orderHandler.details.assemblyTimeAuto" 
+                                    maxlength="3"
+                                    disabled>
+                        </mat-form-field>
+                        &nbsp;
+                        <mat-form-field appearance="fill" style="width:75px !important; text-align: right; font-size: 12px">
+                            <mat-label>Man</mat-label>
+                            <input matInput id="assemblyTime"
+                                    [(ngModel)]="orderHandler.details.assemblyTime" 
+                                    (change)="onAttributeChange($event)"
+                                    maxlength="3">
+                        </mat-form-field>
                     </td>
                 </tr>
            </table>
