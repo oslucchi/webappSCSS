@@ -1,0 +1,107 @@
+<div style='font-weight:bold; font-family: Sans-Serif; font-size: 18px; text-align: center; color: blue;'>
+    Dettagli Spedizione
+</div>
+<div>
+    <table >
+        <tr>
+            <th >
+                Dati spedizione
+            </th>
+            <th>
+                Tracking
+            </th>
+        </tr>
+        <tr>
+            <td style='width:50%'>
+                <table>
+                    <tr>
+                        <td>
+                            Stato spedizione
+                        </td>
+                        <td>
+                            {{ shipment.status }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Data spedizione
+                        </td>
+                        <td>
+                            {{ shipment.shipmentDate }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Numero spedizione
+                        </td>
+                        <td>
+                            {{ shipment.shipmentNo }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Cliente
+                        </td>
+                        <td>
+                            {{ shipment.customer }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Destinazione
+                        </td>
+                        <td>
+                            {{ shipment.address }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            # colli
+                        </td>
+                        <td>
+                            {{ shipment.numOfItems }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Corriere
+                        </td>
+                        <td>
+                            {{ shipment.forwarder }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Bolla
+                        </td>
+                        <td>
+                            {{ shipment.DTVName }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Contatti corriere
+                        </td>
+                        <td>
+                            {{ shipment.forwarderContacts }}
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style='width:50%'>
+                <table style='width: 100%;'>
+                    <tr>
+                        <th style='width:22%'>Data</th>
+                        <th style='width:55%'>Evento</th>
+                        <th style='width:23%'>Note</th>
+                    </tr>
+                    <tr *ngFor="let event of shipment.trackingEvents; index as i">
+                        <td id="date">{{event.eventDate|date:'dd/MM/yy HH:mm'}}</td>
+                        <td id="event">{{event.eventDescription}}</td>
+                        <td id="note">{{event.eventNote}}</td>
+                    </tr>
+                </table>                
+            </td>
+        </tr>
+    </table>
+</div>

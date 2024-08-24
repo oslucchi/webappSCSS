@@ -1,0 +1,46 @@
+<table>
+    <tr style="min-height: 100px; ">
+        <td style="width: 150px; vertical-align: middle;">
+            <button mat-button [matMenuTriggerFor]="Ricevimento">Ricevimento</button>
+            <mat-menu #Ricevimento="matMenu" yPosition="below">
+              <button mat-menu-item (click)="ricevimentoStorico()">Storico</button>
+              <button mat-menu-item (click)="ricevimentoProgrammate()">Programmate</button>
+            </mat-menu>
+        </td>
+        <td style="width: 150px; vertical-align: middle;">
+            <button mat-button [matMenuTriggerFor]="Gestione">Gestione Stock</button>
+            <mat-menu #Gestione="matMenu" yPosition="below">
+              <button mat-menu-item (click)="stockStatus()">Stato</button>
+              <button mat-menu-item (click)="stockAdjustments()">Aggiustamenti</button>
+            </mat-menu>
+        </td>
+        <td style="width: 150px; vertical-align: middle;">
+            <button mat-button [matMenuTriggerFor]="Articoli">Articoli</button>
+            <mat-menu #Articoli="matMenu" yPosition="below">
+              <button mat-menu-item (click)="articles()">Elenco</button>
+            </mat-menu>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3" style="min-height: 150px;">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <div id="recHis" *ngIf="recHisShow" style="width: 100%;">
+                <app-ardex-receiving></app-ardex-receiving>
+            </div>
+            <div id="recPrg" *ngIf="recPrgShow" style="width: 100%;">
+                RIC PROGR
+            </div>
+            <div id="stockStat" *ngIf="stockStatShow" style="width: 100%;">
+                STOCK STATUS
+            </div>
+            <div id="stockAdj" *ngIf="stockAdjShow" style="width: 100%;">
+                STOCK ADJUSTMENT
+            </div>
+            <div id="articles" *ngIf="articlesShow" style="width: 100%;">
+                ARTICOLI
+            </div>
+        </td>
+    </tr>
+</table>

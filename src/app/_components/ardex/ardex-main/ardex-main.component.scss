@@ -1,0 +1,20 @@
+button {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    font-size: large;
+    /*input has OS specific font-family*/
+    color: rgb(22, 150, 214);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.hide{
+  visibility: hidden  
+}
+
+.show{
+  visibility: visible  
+}

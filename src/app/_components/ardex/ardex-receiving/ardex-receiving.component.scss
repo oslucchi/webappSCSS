@@ -1,0 +1,204 @@
+table {
+    font-family: Sans-Serif;
+    font-size: 11px;
+    border-spacing: 0 1px; 
+}
+
+.mat-table {
+    max-height: 700px;
+}
+
+.mat-header-cell {
+    color: rgb(6, 62, 247);
+}
+
+.mat-row {
+    cursor: pointer;
+}
+
+.mat-cell {
+    font-family: Sans-Serif;
+    font-size: 11px;
+}
+
+.mat-row:nth-child(even){
+  background-color:rgba(126, 123, 123, 0.062);
+}
+
+.mat-row:nth-child(odd){
+  background-color:#FDFDFB;
+}
+
+
+.mat-column-idShipment {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 40px !important;
+    width: 40px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    text-align: right;
+    justify-content: flex-end;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.mat-column-date {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 60px !important;
+    width: 60px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto; 
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.mat-column-numOfPallets {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 80px !important;
+    width: 80px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    text-align: right;
+    justify-content: flex-end;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.mat-column-status {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 80px !important;
+    width: 80px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.mat-column-idPallet {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 40px !important;
+    width: 40px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    text-align: right;
+    justify-content: flex-end;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+
+.mat-column-barcode {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 150px !important;
+    width: 150px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.mat-column-ardexArticleId {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 60px !important;
+    width: 60px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.mat-column-numOfItems {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 80px !important;
+    width: 80px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    text-align: right;
+    justify-content: flex-end;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.mat-column-weight {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 50px !important;
+    width: 50px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    text-align: right;
+    justify-content: flex-end;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.mat-column-batch {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 120px !important;
+    width: 120px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.mat-column-expiryDate {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 80px !important;
+    width: 80px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto; 
+    padding-left: 8px;
+    padding-right: 8px;
+}

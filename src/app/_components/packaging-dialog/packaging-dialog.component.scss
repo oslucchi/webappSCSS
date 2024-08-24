@@ -1,0 +1,215 @@
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+.astext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+}
+
+table.articles th, td {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
+table.articles tr {
+    line-height: 100px;
+}
+
+table.articles th, td {
+	/* border: 1px solid black; for older IE */
+    padding: 5px;
+}
+
+/* 
+.mat-column-refERP {
+    text-align: left !important;
+    justify-content: flex-end;      
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 100px !important;
+    width: 100px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.mat-column-description {
+    text-align: left !important;
+    justify-content: flex-end;      
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 500px !important;
+    width: 500px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.mat-column-length {
+    text-align: right !important;
+    justify-content: flex-end;      
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 50px !important;
+    width: 50px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.mat-column-width {
+    text-align: right !important;
+    justify-content: flex-end;      
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 50px !important;
+    width: 50px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.mat-column-heigth {
+    text-align: right !important;
+    justify-content: flex-end;      
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 50px !important;
+    width: 50px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.mat-column-weigth {
+    text-align: right !important;
+    justify-content: flex-end;      
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 50px !important;
+    width: 50px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+} */
+
+table.articles th#refERP,td#refERP {
+    text-align: left !important;
+    justify-content: flex-end;      
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 100px !important;
+    width: 100px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+table.articles th#description,td#description {
+    text-align: left !important;
+    justify-content: flex-end;      
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 500px !important;
+    width: 500px !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word; 
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+table.articles th#length,td#length {
+    text-align: right !important;
+    justify-content: flex-end;      
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 50px !important;
+    width: 50px !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word; 
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+table.articles th#width,td#width {
+    text-align: right !important;
+    justify-content: flex-end;      
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 50px !important;
+    width: 50px !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word; 
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+table.articles th#heigth,td#heigth {
+    text-align: right !important;
+    justify-content: flex-end;      
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 50px !important;
+    width: 50px !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word; 
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+table.articles th#weigth,td#eigth {
+    text-align: right !important;
+    justify-content: flex-end;      
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 50px !important;
+    width: 50px !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word; 
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}

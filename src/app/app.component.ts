@@ -1,14 +1,67 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Component, Inject } from "@angular/core";
+import { StorageService } from "./_services/storage.service";
+import { DOCUMENT } from "@angular/common";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  title = 'webappSCSS';
+  public title: string;
+  public imgPath: string;
+  public menuIcon: string;
+
+  constructor(
+    private storage: StorageService,
+    private router: Router,
+    @Inject(DOCUMENT) private document: any
+  ) {
+    this.imgPath = storage.baseHref + "assets/img/logoWedi.png";
+    this.menuIcon = storage.baseHref + "assets/img/menu.png";
+    this.title = "OrderMngr";
+  }
+
+  ngOnInit(): void {
+    let bases = this.document.getElementsByTagName("base");
+
+    if (bases.length > 0) {
+      bases[0].setAttribute("href", this.storage.baseHref);
+    }
+  }
+
+  admin() {
+    console.log("called admin");
+    this.router.navigate(["admin"]);
+  }
+
+  importStock() {
+    console.log("called shipmentSearch");
+    this.router.navigate(["importStock"]);
+  }
+
+  shipmentSearch() {
+    console.log("called shipmentSearch");
+    this.router.navigate(["shipmentSearch"]);
+  }
+
+  orders() {
+    console.log("called orders");
+    this.router.navigate(["orders"]);
+  }
+
+  shipmentsPending() {
+    console.log("called orders");
+    this.router.navigate(["shipmentsPending"]);
+  }
+
+  ardexFunctions() {
+    console.log("called ardexFunctions");
+    this.router.navigate(["ardexFunctions"]);
+  }
+
+  setup() {
+    console.log("called setup");
+  }
 }

@@ -1,0 +1,196 @@
+.astext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+}
+
+table th, td {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
+table.shipments th, td {
+	/* border: 1px solid black; for older IE */
+    width: 100%;
+    padding: 5px;
+}
+
+table.shipments th#selected,td#selected{
+	width: 3%;
+    text-align: center;
+}
+
+table.shipments th#articleDescription,td#articleDescription {
+    word-wrap: break-word !important;
+    word-break: break-word;
+    white-space: unset !important;
+    flex: 0 0 45% !important;
+    width: 45% !important;
+    overflow-wrap: break-word;
+    text-align: left !important;
+    justify-content: flex-end;      
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+table.shipments th#length,td#length {
+    word-wrap: break-word !important;
+    word-break: break-word;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 10% !important;
+    overflow-wrap: break-word;
+    text-align: right !important;
+    justify-content: flex-end;      
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+table.shipments th#width,td#width {
+    word-wrap: break-word !important;
+    word-break: break-word;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 10% !important;
+    overflow-wrap: break-word;
+    text-align: right !important;
+    justify-content: flex-end;  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+table.shipments th#height,td#height {
+    word-wrap: break-word !important;
+    word-break: break-word;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 10% !important;
+    overflow-wrap: break-word;
+    text-align: right !important;
+    justify-content: flex-end;  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+table.shipments th#weight,td#weight {
+    word-wrap: break-word !important;
+    word-break: break-word;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 10% !important;
+    overflow-wrap: break-word;
+    text-align: right !important;    
+    justify-content: flex-end;  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 0px;
+}
+
+table.shipmentsGroupage td#selectedIn {
+	width: 3%;
+    text-align: center;
+}
+
+table.shipmentsGroupage td#articleDescriptionIn {
+    word-wrap: break-word !important;
+    word-break: break-word;
+    white-space: unset !important;
+    flex: 0 0 45% !important;
+    width: 45% !important;
+    overflow-wrap: break-word;
+    text-align: left !important;
+    justify-content: flex-end;      
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    padding: 2px 24px 2px 0px; 
+}
+
+table.shipmentsGroupage td#lengthIn {
+    word-wrap: break-word !important;
+    word-break: break-word;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 10% !important;
+    overflow-wrap: break-word;
+    text-align: right !important;
+    justify-content: flex-end;      
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    padding: 2px 24px 2px 0px; 
+}
+
+table.shipmentsGroupage td#widthIn {
+    word-wrap: break-word !important;
+    word-break: break-word;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 10% !important;
+    overflow-wrap: break-word;
+    text-align: right !important;
+    justify-content: flex-end;      
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    padding: 2px 24px 2px 0px; 
+}
+
+table.shipmentsGroupage td#heightIn {
+    word-wrap: break-word !important;
+    word-break: break-word;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 10% !important;
+    overflow-wrap: break-word;
+    text-align: right !important;
+    justify-content: flex-end;      
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    padding: 2px 24px 2px 0px; 
+}
+
+table.shipmentsGroupage td#weightIn {
+    word-wrap: break-word !important;
+    word-break: break-word;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 10% !important;
+    overflow-wrap: break-word;
+    text-align: right !important;
+    justify-content: flex-end;      
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    padding: 2px 24px 2px 0px; 
+}
+
+table.buttons td {
+    display: table-cell;
+    align-items: center;
+    vertical-align: middle;
+    align-content: center;
+    text-align: center;
+}

@@ -1,0 +1,85 @@
+<table class="articles" class="mat-body">
+    <caption style='font-size: large;  font-weight: bold; color: blue;'>{{title}}<br><br></caption>
+    <tr>
+        <th id="selected">
+            Modifica Articolo 
+            <mat-checkbox [checked]='false' (change)='toggleAllArticlesSelection($event);'></mat-checkbox><br>
+        </th>
+        <th id="refERP">Codice</th>
+        <th id="description">Descrizione</th>
+        <th id="length">Lun</th>
+        <th id="width">Lar</th>
+        <th id="heigth">Alt</th>
+        <th id="weigth">Peso</th>
+    </tr>
+    <tr *ngFor="let article of orderArticles; index as i">
+        <td id="selected"><mat-checkbox [(ngModel)]='article.selected' [checked]='false'></mat-checkbox></td>
+        <td  id="refERP" style="width:100px !important; text-align: left;">
+            {{article.articleRefERP}}
+        </td>
+        <td id="description" style="width:500px !important; text-align: left;">
+            {{article.articleDescription}}
+        </td>
+        <td id="length" style="width:50px !important; text-align: right;">
+            <input matInput id="length" type="number"
+                    [(ngModel)]="article.articlePackageLength"
+                    maxlength="5"
+                    [appTwoDigitDecimalNumber]=0>
+        </td>
+        <td id="width" style="width:50px !important; text-align: right;">
+            <input matInput id="width" type="number"
+                    [(ngModel)]="article.articlePackageWidth"
+                    maxlength="5"
+                    [appTwoDigitDecimalNumber]=0>
+        </td>
+        <td id="heigth" style="width:50px !important; text-align: right;">
+            <input matInput id="heigth" type="number"
+                [(ngModel)]="article.articlePackageHeight"
+                maxlength="5"
+                [appTwoDigitDecimalNumber]=0>
+        </td>
+        <td id="weigth" style="width:50px !important; text-align: right;">
+            <input matInput id="weigth" type="number"
+                [(ngModel)]="article.articlePackageWeight"
+                maxlength="6"
+                [appTwoDigitDecimalNumber]=1>
+        </td>
+    </tr>
+</table> 
+<!-- 
+<mat-table [dataSource]="dataSourceDetails" id="article">
+    <ng-container matColumnDef="refERP">
+        <mat-header-cell *matHeaderCellDef>Codice</mat-header-cell>
+        <mat-cell class="mat-body" *matCellDef="let article">{{article.refERP}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef>Descrizione</mat-header-cell>
+        <mat-cell class="mat-body" *matCellDef="let article">{{article.description}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="length">
+        <mat-header-cell *matHeaderCellDef>Lun</mat-header-cell>
+        <input matInput *matCellDef="let article" id="length" type="number"
+                formControlName="article.length"
+                maxlength="5">
+        <mat-cell class="mat-body" *matCellDef="let article">{{article.length}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="width">
+        <mat-header-cell *matHeaderCellDef>Lun</mat-header-cell>
+        <mat-cell class="mat-body" *matCellDef="let article">{{article.width}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="heigth">
+        <mat-header-cell *matHeaderCellDef>Lun</mat-header-cell>
+        <mat-cell class="mat-body" *matCellDef="let article">{{article.heigth}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="weigth">
+        <mat-header-cell *matHeaderCellDef>Lar</mat-header-cell>
+        <mat-cell class="mat-body" *matCellDef="let article">{{article.weigth}}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="getArticlesDisplayedColumns()"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: getArticlesDisplayedColumns()"></mat-row>
+</mat-table>
+-->
+<mat-dialog-actions>
+    <button class="mat-raised-button"(click)="updatePackaging()">Aggiorna</button>
+    <button class="mat-raised-button mat-primary"(click)="closeDialog()">Cancella</button>
+</mat-dialog-actions>

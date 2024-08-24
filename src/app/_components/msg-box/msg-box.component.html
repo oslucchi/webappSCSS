@@ -1,0 +1,9 @@
+<h2 class="mat-dialog-title">{{title}}</h2>
+<mat-dialog-content>{{ message }}</mat-dialog-content>
+<mat-dialog-actions *ngIf="buttons === Buttons.Ok">
+  <button mat-raised-button (click)="click(Button.Ok)">Ok</button>
+</mat-dialog-actions>
+<mat-dialog-actions *ngIf="buttons === Buttons.YesNo ">
+  <button mat-raised-button (click)="click(Button.Yes)" tabindex="-1">Yes</button>
+  <button mat-raised-button (click)="click(Button.No)" class="mat-primary">No</button>
+</mat-dialog-actions>

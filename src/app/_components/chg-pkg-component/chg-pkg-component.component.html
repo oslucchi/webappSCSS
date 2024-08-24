@@ -1,0 +1,73 @@
+<p class="mat-h1" style='text-align: center;'>
+    {{ caption }} {{ order.orderRef }}
+</p>
+
+<table class="shipments" style='width: 85%;'>
+    <tr>
+        <th id="selected">
+            <mat-checkbox [(ngModel)]='shipmentSelection' [checked]='false' (click)='toggleAllShipmentsSelection();'></mat-checkbox>
+        </th>
+        <th id="articleDescription">
+            Articolo
+            &nbsp;
+            <input mdInput [(ngModel)]="articleFilter" (input)="onFilterChange($event)" 
+                   placeholder="Cerca..." type="text" style="width: 250px">
+        </th>
+        <th id="length">Lun</th>
+        <th id="width">Lar</th>
+        <th id="height">Alt</th>
+        <th id="weight">Kg</th>
+    </tr>
+    <tr *ngFor="let shipment of shipments; index as i">
+        <td  id="selected">
+            <mat-checkbox [(ngModel)]='shipment.selected' [checked]='false' (click)='toggleShipmentSelection(i);'></mat-checkbox>
+        </td>
+        <td id="articleDescription">{{shipment.articleDescription}}</td>
+        <td id="length">{{shipment.length}}</td>
+        <td id="width">{{shipment.width}}</td>
+        <td id="height">{{shipment.height}}</td>
+        <td id="weight">{{shipment.weight | number : '1.2-2'}}</td>
+    </tr>
+</table>
+<br>
+<br>
+<br>
+<p class="mat-h3" style='text-align: center;'>
+    Inserisci dati oggetto raggruppato
+</p>
+<table style='width: 100%;'>
+    <tr>
+        <td style='width: 88%;'>
+            <table class="shipmentsGroupage" style='width: 100%;'>
+                <tr>
+                    <td id="selectedIn">&nbsp;</td>
+                    <td id="articleDescriptionIn"><input [(ngModel)]="groupedShipment.articleDescription" size="45" maxlength="45"></td>
+                    <td id="lengthIn"><input type="text" [(ngModel)]="groupedShipment.length" size="5" maxlength="5" minlength="1"></td>
+                    <td id="widthIn"><input type="text" [(ngModel)]="groupedShipment.width" size="5" maxlength="5" minlength="1"></td>
+                    <td id="heightIn"><input type="text" [(ngModel)]="groupedShipment.height" size="5" maxlength="5" minlength="1"></td>
+                    <td id="weightIn"><input type="text" [(ngModel)]="groupedShipment.weight" size="5" maxlength="5" minlength="1"></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <button (click)='groupItems()'>Raggruppa</button>
+        </td>
+    </tr>   
+</table>
+
+<br>
+<br>
+<br>
+<table class="buttons" style='width: 100%;'>
+    <tr>
+        <td style="width: 33%;">
+            <button (click)='saveShipments(); closeDialog();'>Salva</button>
+        </td>
+        <td style="width: 33%;">
+            <button (click)='revertFromDetails()'>Recupera originale</button>
+        </td>
+        <td style="width: 33%;">
+            <button (click)='closeDialog()'>Abbandona</button>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,38 @@
+<p style='font-weight:bold; font-family: Sans-Serif; font-size: 14px; align-items: center;'>
+    SPEDIZIONI IN ATTESA DI CONSEGNA
+</p>
+<div>
+    <mat-table [dataSource]="dataSource" id="ordersPending" matSort style="max-width: 99%;">
+        <ng-container matColumnDef="shipmentDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Data spedizione</mat-header-cell>
+            <mat-cell *matCellDef="let orderPending">{{orderPending.shipmentDate|date:'dd/MM/yy'}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="forwarder">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Vet</mat-header-cell>
+            <mat-cell *matCellDef="let orderPending">{{orderPending.forwarder}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>St</mat-header-cell>
+            <mat-cell *matCellDef="let orderPending">{{orderPending.status}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="orderRef">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Impegno</mat-header-cell>
+            <mat-cell *matCellDef="let orderPending">{{orderPending.orderRef}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="customer">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Cliente</mat-header-cell>
+            <mat-cell *matCellDef="let orderPending">{{orderPending.customer}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="city">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Citt&agrave;</mat-header-cell>
+            <mat-cell *matCellDef="let orderPending">{{orderPending.city}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="province">
+            <mat-header-cell *matHeaderCellDef>PV</mat-header-cell>
+            <mat-cell *matCellDef="let orderPending">{{orderPending.province}}</mat-cell>
+        </ng-container>
+       
+        <mat-header-row *matHeaderRowDef="getOrdersDisplayedColumns();"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: getOrdersDisplayedColumns();" (click)="viewShipmentDetails(row)"></mat-row>
+    </mat-table>
+</div>

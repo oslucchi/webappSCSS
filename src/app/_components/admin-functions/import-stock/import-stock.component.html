@@ -1,0 +1,31 @@
+<mat-card>
+  <mat-card-content>
+    <span *ngIf="!disableButtons; else importing">
+      <button
+        type="button"
+        onclick="document.getElementById('uploadFile').click()"
+      >
+        Scegli file Inventario da INFOR
+      </button>
+    </span>
+    <ng-template #importing>
+      Importazione del file {{ file.name }} in corso... Attendere!
+    </ng-template>
+
+    &nbsp;
+    <input
+      (change)="onFileSelected($event)"
+      style="display: none"
+      type="file"
+      id="uploadFile"
+      accept=".csv"
+    />
+    &nbsp;
+    <span *ngIf="file !== null && file.name !== '' && !disableButtons">
+      &nbsp;
+      {{ file == null || file.name == null ? "" : file.name }}
+      <button id="importStockGo" (click)="importStock()">Importa</button>
+    </span>
+    <mat-spinner *ngIf="disableButtons" style="margin: 0 auto"> </mat-spinner>
+  </mat-card-content>
+</mat-card>
