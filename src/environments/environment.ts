@@ -1,7 +1,7 @@
 export const environment = {
-  production: false,
-  CHAT_URL: "ws://webAppServerInternal.wedi.it:8080/orderMngr/endpoint",
-  host: "http://webAppServerInternal.wedi.it:8080",
-  baseURL: "/orderMngr",
-  baseHref: "/orderMngr/"
+  production: true,
+  CHAT_URL: "ws://192.168.60.184:8080/orderMngrAX/endpoint",
+  host: "http://192.168.60.184:8080",
+  baseURL: "/orderMngrAX",
+  baseHref: "/orderMngrAX/"
 };
