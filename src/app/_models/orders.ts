@@ -4,10 +4,10 @@ export class Orders {
   idCustomer: number = 0;
   idCustomerDelivery: number = 0;
   customerOrderRef: string = "";
-  requestedAssemblyDate: Date | undefined;
-  effectiveAssemblyDate: Date | undefined;
-  shipmentDate: Date | undefined;
-  invoiceDate: Date | undefined;
+  requestedAssemblyDate: Date = new Date();
+  effectiveAssemblyDate: Date  = new Date();
+  shipmentDate: Date  = new Date();
+  invoiceDate: Date  = new Date();
   orderRef: string = "";
   transportDocNum: string = "";
   forwarder: string = "";
@@ -26,7 +26,7 @@ export class Orders {
   confirmationEmail: string = "";
   invoiceValue: number = 0;
   DTVName: string = "";
-  DTVDate: Date | undefined;
+  DTVDate: Date  = new Date();
   numberOfItems: number = 0;
   shipmentNo: number = 0;
   sourceIssue: string = "";
@@ -35,4 +35,8 @@ export class Orders {
   customerDeliveryProvince: string = "";
   pickupReuqestNo: string = "";
   selected: boolean = false;
+
+  static updateOrderField<T, K extends keyof T>(obj: T, key: K, value: T[K]): void {
+    obj[key] = value;
+  }
 }

@@ -23,12 +23,12 @@ export class OrderStatusChangeEmailComponent implements OnInit {
   public multiSiteGenericEmail: string = "";
 
   private apiService: ApiService | undefined;  
-  private dialogRef: MatDialogRef<OrderStatusChangeEmailComponent> | undefined;
-
+  
   public onClose = new EventEmitter();
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) data: any) 
+  constructor(private dialogRef: MatDialogRef<OrderStatusChangeEmailComponent>,
+              @Inject(MAT_DIALOG_DATA) data: any) 
   {
     this.caption = data.caption;
     this.customerDelivery = data.customerDelivery;

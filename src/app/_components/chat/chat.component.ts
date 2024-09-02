@@ -1,10 +1,9 @@
-import { Component, OnInit, Output, ViewEncapsulation } from "@angular/core";
+import { Component, NgZone, OnInit, Output, ViewEncapsulation, EventEmitter } from "@angular/core";
 import { Message } from "../../_models/message";
 import { User } from "../../_models/user";
 import { DatePipe } from "@angular/common";
 import { CookieService } from "ngx-cookie-service";
 import { environment } from "../../../environments/environment";
-import { EventEmitter } from "events";
 
 @Component({
   selector: "app-chat",
@@ -15,7 +14,7 @@ import { EventEmitter } from "events";
 
 
 export class ChatComponent implements OnInit {
-  @Output() onOrderChange = new EventEmitter();
+  @Output() onOrderChange = new EventEmitter<string>();
 
   private color: string = "blue";
   private ws: WebSocket | undefined;
@@ -52,6 +51,7 @@ export class ChatComponent implements OnInit {
   constructor(
     // public wsService: WebsocketService,
     // public chatService: ChatService,
+    // private ngZone: NgZone,
     public datepipe: DatePipe,
     public cookieService: CookieService
   ) {}
@@ -64,11 +64,15 @@ export class ChatComponent implements OnInit {
     console.log("Creating new socket on " + environment.CHAT_URL);
     instance.ws = new WebSocket(environment.CHAT_URL);
 
+    instance.ws.onerror = ((event) => {
+      console.log("Socket error " + event);
+    });
+
     instance.ws.onmessage = (event) => {
-      console.log("Message received: " + event.data);
-      var msg: Message = JSON.parse(event.data);
+      let msg: Message = JSON.parse(event.data);
       console.log(
-        "Message from WebSocket Server: " + msg.idMessage + " type: " + msg.type
+        "Message from WebSocket Server: \nType: " + msg.type +
+        "\nText :'" + (msg.type == Message.MSG_ORDER_CHANGED ? atob(msg.text) : msg.text) + "'" 
       );
       var from: string = "";
       var now = new Date(),
@@ -97,7 +101,10 @@ export class ChatComponent implements OnInit {
           break;
 
         case Message.MSG_HISTORY:
-          instance.textarea = atob(msg.text);
+          if (msg.sender.toUpperCase() != "SERVER")
+          {
+            instance.textarea = msg.text;
+          }
           break;
 
         case Message.MSG_RMV_USER:
@@ -131,8 +138,12 @@ export class ChatComponent implements OnInit {
           break;
 
         case Message.MSG_ORDER_CHANGED:
+          msg.text = atob(msg.text);
+          // this.ngZone.run(() => {
+          //   this.onOrderChange.emit(msg.text);
+          // });
           this.onOrderChange.emit(msg.text);
-          console.log("ORDER_CHANGED received for '" + msg.text + "'");
+          console.log("event emitted");
           break;
       }
     };

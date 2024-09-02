@@ -610,14 +610,30 @@ export class OrdersComponent implements OnInit {
 
   changeOnlyIfDisplayed(event: any)
   {
-    var changeMsg: OrderChangeMessage = event.target.value; 
-    var fieldsToChange = changeMsg.changedFields.split(", ");
-    this.orderList.every((order: any) => {
-      if (changeMsg.order.orderRef == order.orderRef) {
-        fieldsToChange.every((field: string) => {
-          order[field as keyof Orders] = changeMsg.order[field as keyof Orders];
+    console.log("Change order event captured from server");
+
+    let changeMsg: OrderChangeMessage = JSON.parse(event); 
+    let fieldsToChange: string[] = changeMsg.changedFields.split(", ");
+    console.log(changeMsg);
+
+    console.log("Received a request to change attributes " + fieldsToChange +
+                " for order '" + changeMsg.order.orderRef + "'");
+
+
+    this.dataSource.data.every((order: Orders) => {
+      console.log("Considering order '" + order.orderRef + "'")
+      if (changeMsg.order.orderRef === order.orderRef) {
+        fieldsToChange.every((field: String) => {
+          console.log("changing order in orderList to new value '" + changeMsg.order[field as keyof Orders] + "'");
+          Orders.updateOrderField(order, field as keyof Orders, changeMsg.order[field as keyof Orders]);
         });
       }
     });
+    if (this.orderHandler.details.orderRef === changeMsg.order.orderRef) {
+        fieldsToChange.every((field: string) => {
+          console.log("changing orderHandler attribute '" + field + "' in orderList to the value '" + changeMsg.order[field as keyof Orders] + "'");
+          Orders.updateOrderField(this.orderHandler.details, field as keyof Orders, changeMsg.order[field as keyof Orders]);
+        });
+    }
   }
 }
