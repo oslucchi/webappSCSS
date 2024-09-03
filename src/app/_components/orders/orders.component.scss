@@ -1,15 +1,17 @@
 .header {
     display: flex;
-    max-height:25%; 
-    min-height:25%;
+    min-height: 340px !important;
+    max-height: 340px !important;
+    height: 340px !important;
     flex-direction: column;
     justify-content: space-between;
     overflow: auto;
 }
 
 .orderDetails {
-    max-height:70%; 
-    min-height:70%;
+    max-height:500px; 
+    min-height:500px;
+    height:500px !important;
     flex-grow: 1;
 }
 

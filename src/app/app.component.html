@@ -1,35 +1,18 @@
-<table style="width: 100%">
+<table style="width: 100%; height: 100%;">
   <tr>
-    <td style="width: 50%">
-      <a href="">
-        <img [src]="imgPath" alt="logo wedi" />
-      </a>
+    <td>
+      <table>
+        <tr>
+          <td style="width: 50%">
+            <a href="">
+              <img [src]="imgPath" alt="logo wedi" />
+            </a>
+          </td>
+          <td style="width: 50%; text-align: right">
+        </tr>
+      </table>
     </td>
-    <td style="width: 50%; text-align: right">
-      <!--
-      <div class="md-menu-demo" ng-cloak>
-        <div class="menu-demo-container" layout-align="center center" layout="column">
-  <h2 class="md-title">Custom triggers</h2>
-  <p>
-    You can customize the events that open and close a menu by using the <code>$mdMenu.open</code> and
-    <code>$mdMenu.close</code> methods. This is an example of triggering a menu on hover, instead of click.
-  </p>
-          <md-menu>
-            <md-button aria-label="Open menu with custom trigger" class="md-icon-button" ng-mouseenter="$mdMenu.open()">
-              <md-icon md-menu-origin></md-icon>
-                <img [src]="menuIcon" alt="menu icon">
-            </md-button>
-            <md-menu-content width="4" ng-mouseleave="$mdMenu.close()">
-              <md-menu-item ng-repeat="item in [1, 2, 3]">
-                <md-button>
-                  Option {{item}}
-                </md-button>
-              </md-menu-item>
-            </md-menu-content>
-          </md-menu>
-        </div>
-      </div>
--->
+    <td>
       <button mat-icon-button [matMenuTriggerFor]="mainMenu" aria-label="Menu">
         <mat-icon>more_vert</mat-icon>
       </button>
@@ -66,5 +49,7 @@
       </mat-menu>
     </td>
   </tr>
+  <tr>
+    <router-outlet></router-outlet>
+  </tr>
 </table>
-<router-outlet></router-outlet>
