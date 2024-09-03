@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from "@angular/core";
+import { Component, OnInit, Input, Output, ElementRef } from "@angular/core";
 import { Orders } from "../../_models/orders";
 import { ApiService } from "../../_services/api.service";
 import { OrderHandler } from "../../_models/order-handler";

@@ -636,4 +636,22 @@ export class OrdersComponent implements OnInit {
         });
     }
   }
+
+  attributeInSet(stringArray: string[], value: string) {
+    var isIn: boolean;
+    isIn = false;
+    try {
+      isIn = stringArray.includes(value);
+    } catch (err: any) {
+      console.log(err.message);
+      var i: number;
+      for (i = 0; i < stringArray.length; i++) {
+        if (stringArray[i].localeCompare(value) == 0) {
+          isIn = true;
+          break;
+        }
+      }
+    }
+    return isIn;
+  }
 }

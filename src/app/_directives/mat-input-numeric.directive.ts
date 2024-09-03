@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Input } from "@angular/core";
+import { AfterViewInit, Directive, ElementRef, HostListener, Input, OnChanges, OnInit, SimpleChanges } from "@angular/core";
 
 @Directive({
   selector: "[matInputNumeric]"
@@ -19,6 +19,26 @@ export class MatInputNumericDirective {
         this.decimals +
         "}))))\\s*$";
       return String(value).match(new RegExp(regExpString));
+    }
+  }
+
+  private formatNumber(value: string): string {
+    if (this.decimals > 0) {
+      return parseFloat(value).toFixed(this.decimals);
+    }
+    return parseFloat(value).toString();
+  }
+  private formatValue(value: any) {
+    let allowNegative = this.negative > 0 ? true : false;
+
+    if (allowNegative) {
+      if (value !== "" && value !== "-" && !this.checkAllowNegative(value)) {
+        this.el.nativeElement.value = this.formatNumber(value);
+      }
+    } else {
+      if (value !== "" && !this.check(value)) {
+        this.el.nativeElement.value = this.formatNumber(value);
+      }
     }
   }
 
@@ -67,4 +87,10 @@ export class MatInputNumericDirective {
   onPaste(event: ClipboardEvent) {
     this.run(this.el.nativeElement.value);
   }
+
+  @HostListener('blur', ['$event']) onBlur(event: any) {
+    const value = this.el.nativeElement.value;
+    this.el.nativeElement.value = parseFloat(value).toFixed(this.decimals);
+  }
+
 }

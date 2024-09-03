@@ -7,7 +7,67 @@
 
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
-.orderMngr {
+.orderMngrAX {
+    html, body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    table {
+        font-family: Sans-Serif;
+        font-size: 12px;
+        border-spacing: 0 1px; 
+    }
+
+    .mat-column  {
+        word-wrap: break-word !important;
+        white-space: unset !important;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        -ms-hyphens: auto;
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+    }
+    
+    .mat-cell {
+        font-family: Sans-Serif;
+        font-size: 12px;
+    }
+    
+    
+    .mat-mdc-header-cell {
+        font-size: 11px;
+        color: blue;
+    }
+    
+
+    .mat-cb-label-small {
+        font-size: 6px;
+    }
+    
+    .mat-mdc-row {
+        font-family: Sans-Serif;
+        font-size: 10px;
+    }
+    
+    .mat-mdc-row:nth-child(odd) {
+        background-color:#FDFDFB;
+    }
+    
+    .mat-mdc-row:nth-child(even) {
+        background-color:rgba(126, 123, 123, 0.062);
+    }
+    
+    .mat-mdc-row:hover{
+        background-color: #e7eff1 !important;
+    }
+
+    .mat-mdc-form-field-label {
+        width: 70px !important;
+    }
+    
     .mat-mdc-floating-label{
         color: green;
         font-size: 8px;

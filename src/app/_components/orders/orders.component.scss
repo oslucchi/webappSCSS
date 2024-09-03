@@ -1,9 +1,3 @@
-html, body {
-    height: 100%;
-    padding: 0;
-    margin: 0;
-}
-
 .header {
     display: flex;
     max-height:25%; 
@@ -19,333 +13,76 @@ html, body {
     flex-grow: 1;
 }
 
-table {
-    font-family: Sans-Serif;
-    font-size: 11px;
-    border-spacing: 0 1px; 
-}
 
-.mat-cb-label-small {
-    font-size: 6px;
-}
-
-.mat-table {
-    max-height: 700px;
-}
-
-.mat-header-cell {
-    color: rgb(6, 62, 247);
-}
-
-.mat-row {
-    cursor: pointer;
-}
-
-.mat-cell {
-    font-family: Sans-Serif;
-    font-size: 11px;
-}
-
-.mat-mdc-header-cell {
-    font-size: 11px;
-    color: blue;
-}
-
-
-.mat-mdc-row {
-    font-size: 9px;
-}
-
-.mat-mdc-row:nth-child(odd) {
-    background-color:#FDFDFB;
-}
-
-.mat-mdc-row:nth-child(even) {
-    background-color:rgba(126, 123, 123, 0.062);
-}
-
-.mat-mdc-row:hover{
-    background-color: #87CEEB !important;
-}
-
-.mat-row:nth-child(even){
-    background-color:rgba(126, 123, 123, 0.062);
-}
-
-.mat-row:nth-child(odd){
-  background-color:#FDFDFB;
-}
-
-.mat-column {
-    font-size: 11px
+.mdc-text-field {
+    width: 50px;
 }
 
 .mat-column-status {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 7% !important;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    flex: 0 0 6% !important;
+    width: 6% !important;
 }
 
 .mat-column-forwarder {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 7% !important;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    flex: 0 0 6% !important;
+    width: 6% !important;
 }
    
 .mat-column-orderRef {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 10% !important;
-    width: 10% !important;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    flex: 0 0 8% !important;
+    width: 8% !important;
 }
 
 .mat-column-customerRefERP {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 10% !important;
-    width: 10% !important;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    flex: 0 0 9% !important;
+    width: 9% !important;
 }
 
 .mat-column-customerDescription {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 34% !important;
-    width: 34% !important;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-}
-
-.mat-column-customerDeliveryProvince {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 4% !important;
-    width: 4% !important;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    flex: 0 0 32% !important;
+    width: 32% !important;
 }
 
 .mat-column-sourceIssue {
-    word-wrap: break-word !important;
-    white-space: unset !important;
     flex: 0 0 3% !important;
     width: 3% !important;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    color: red;
 }
 
-.mat-column-palletLength {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 4% !important;
-    width: 4% !important;
-    overflow-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    
-    text-align: right;
-    justify-content: flex-end;
-  }
-
-.mat-column-palletWidth {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 4% !important;
-    width: 4% !important;
-    overflow-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    
-    text-align: right;
-    justify-content: flex-end;
-  }
-
-.mat-column-palletHeigth {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 4% !important;
-    width: 4% !important;
-    overflow-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    
-    text-align: right;
-    justify-content: flex-end;
-  }
-
-.mat-column-palletWeigth {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 4% !important;
-    width: 4% !important;
-    overflow-wrap: break-word;
-
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    
-    text-align: right;
-    justify-content: flex-end;
-}
-
-.mat-column-empty {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 3% !important;
-    width: 3% !important;
-    overflow-wrap: break-word;
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    
-    justify-content: center;
-}
-
-.mat-colum-shipmentDate {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 10% !important;
-    width: 10% !important;
-    overflow-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    
+.mat-mdc-colum-shipmentDate {
+    flex: 0 0 12% !important;
+    width: 12% !important;
     justify-content: left;
 }
 
-.mat-column-compositionBoards {
-    word-wrap: break-word !important;
-    white-space: unset !important;
+.mat-mdc-colum-requestedAssemblyDate {
+    flex: 0 0 12% !important;
+    width: 12% !important;
+    justify-content: left;
+}
+
+.mat-mdc-colum-compositionBoards {
     flex: 0 0 5% !important;
     width: 5% !important;
-    overflow-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    
+    justify-content: center;
+}
+.mat-mdc-colum-compositionTrays {
+    flex: 0 0 5% !important;
+    width: 5% !important;
+    justify-content: center;
+}
+.mat-mdc-colum-compositionDesign {
+    flex: 0 0 5% !important;
+    width: 5% !important;
+    justify-content: center;
+}
+.mat-mdc-colum-compositionAccessories {
+    flex: 0 0 5% !important;
+    width: 5% !important;
     justify-content: center;
 }
 
-.mat-column-compositionTrays {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 5% !important;
-    width: 5% !important;
-    overflow-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    
-    justify-content: center;
-}
-
-.mat-column-compositionDesign {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 5% !important;
-    width: 5% !important;
-    overflow-wrap: break-word;
-
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    
-    justify-content: center;
-}
-
-.mat-column-compositionAccessories {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 5% !important;
-    width: 5% !important;
-    overflow-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    
-    justify-content: center;
-}
 
 .highlightBoards {
-    flex: 0 0 5% !important;
-    width: 5% !important;
     background: green;
     color: white;
     text-align: center;
@@ -354,8 +91,6 @@ table {
 }
 
 .highlightTrays {
-    flex: 0 0 5% !important;
-    width: 5% !important;
     background: red; 
     color: white;
     text-align: center;
@@ -364,8 +99,6 @@ table {
 }
 
 .highlightDesign {
-    flex: 0 0 5% !important;
-    width: 5% !important;
     background: blue;
     color: white;
     text-align: center;
@@ -374,8 +107,6 @@ table {
 }
 
 .highlightAccessories {
-    flex: 0 0 5% !important;
-    width: 5% !important;
     background: yellow;
     color: black;
     text-align: center;
@@ -383,99 +114,46 @@ table {
     font-weight: bold;
 }
 
+.mat-column-empty {
+    flex: 0 0 3% !important;
+    width: 3% !important;
+    justify-content: center;
+}
+
+
 .mat-column-articleRefERP {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 15% !important;
-    width: 15% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    flex: 0 0 17% !important;
+    width: 17% !important;
 }
 
 .mat-column-articleDescription {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 52% !important;
-    width: 52% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    flex: 0 0 45% !important;
+    width: 45% !important;
 }
 
 .mat-column-articleSourceIssue {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 2% !important;
-    width: 2% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    flex: 0 0 5% !important;
+    width: 5% !important;
     color: red;
 }
 
 .mat-column-piecesFromSqm {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 9% !important;
-    width: 9% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    
+    flex: 0 0 11% !important;
+    width: 11% !important;
     text-align: right;
     justify-content: flex-end;
   }
 
 .mat-column-quantity {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 8% !important;
-    width: 8% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    
+    flex: 0 0 11% !important;
+    width: 11% !important;
     text-align: right;
     justify-content: flex-end;
   }
 
   .mat-column-articleUnityOfMeasure {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 8% !important;
-    width: 8% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    flex: 0 0 11% !important;
+    width: 11% !important;
     text-align: center;
     justify-content: flex-end;
 }

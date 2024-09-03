@@ -64,4 +64,5 @@ export class AppComponent {
   setup() {
     console.log("called setup");
   }
+
 }
