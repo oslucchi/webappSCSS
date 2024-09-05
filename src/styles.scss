@@ -38,7 +38,7 @@
     
     
     .mat-mdc-header-cell {
-        font-size: 11px;
+        font-size: 12px;
         color: blue;
     }
     
@@ -49,7 +49,7 @@
     
     .mat-mdc-row {
         font-family: Sans-Serif;
-        font-size: 10px;
+        font-size: 12px;
     }
     
     .mat-mdc-row:nth-child(odd) {
@@ -98,10 +98,12 @@
     }
 
     .mat-mdc-checkbox {
-        label {
+         height: 30px;
+            label {
             cursor: pointer;
-            font-size: 10px;
+            font-size: 12px;
         }
+        --mdc-form-field-label-text-line-height: 30px;
         --mdc-checkbox-selected-checkmark-color: #ffffff;
         --mdc-checkbox-selected-icon-color: #CF5F5FEE;
         --mdc-checkbox-selected-focus-icon-color: #CF5F5FEE;
