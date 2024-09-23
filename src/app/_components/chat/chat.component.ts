@@ -101,10 +101,11 @@ export class ChatComponent implements OnInit {
           break;
 
         case Message.MSG_HISTORY:
-          if (msg.sender.toUpperCase() != "SERVER")
-          {
-            instance.textarea = msg.text;
-          }
+          // if (msg.sender.toUpperCase() != "SERVER")
+          // {
+          //   instance.textarea = msg.text;
+          // }
+          instance.textarea = atob(msg.text);
           break;
 
         case Message.MSG_RMV_USER:

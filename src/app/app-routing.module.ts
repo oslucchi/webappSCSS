@@ -11,21 +11,21 @@ import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 
 const routes: Routes = [
-  { path: "orders", component: OrdersComponent },
+  { path: "orders", component: OrdersComponent, },
   { path: "login", component: LoginComponent },
   { path: "shipmentSearch", component: ShipmentSearchComponent },
   { path: "admin", component: AdminFunctionsComponent },
   { path: "importStock", component: ImportStockComponent },
   { path: "shipmentsPending", component: ShipmentTrackingComponent },
   { path: "ardexFunctions", component: ArdexMainComponent},
-  { path: "", redirectTo: "orders", pathMatch: "full" },
-  { path: "**", redirectTo: "orders", pathMatch: "prefix" }
+  { path: "", redirectTo: "/orders", pathMatch: "full" },
+  { path: "**", redirectTo: "/orders", pathMatch: "prefix" }
 ];
 
 @NgModule({
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes, {useHash: false, onSameUrlNavigation: 'reload'}), CommonModule
+    RouterModule.forRoot(routes, {useHash: true, onSameUrlNavigation: 'ignore'}), CommonModule
   ],
   exports: [RouterModule],
 })

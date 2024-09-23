@@ -33,32 +33,32 @@ export class AppComponent {
 
   admin() {
     console.log("called admin");
-    this.router.navigate(["admin"]);
+    this.router.navigate(["/admin"], { skipLocationChange : true });
   }
 
   importStock() {
     console.log("called shipmentSearch");
-    this.router.navigate(["importStock"]);
+    this.router.navigate(["/importStock"], { skipLocationChange : true });
   }
 
   shipmentSearch() {
     console.log("called shipmentSearch");
-    this.router.navigate(["shipmentSearch"]);
+    this.router.navigate(["/shipmentSearch"], { skipLocationChange : true });
   }
 
   orders() {
     console.log("called orders");
-    this.router.navigate(["orders"]);
+    this.router.navigate(["/orders"], { skipLocationChange : true });
   }
 
   shipmentsPending() {
     console.log("called orders");
-    this.router.navigate(["shipmentsPending"]);
+    this.router.navigate(["/shipmentsPending"], { skipLocationChange : true });
   }
 
   ardexFunctions() {
     console.log("called ardexFunctions");
-    this.router.navigate(["ardexFunctions"]);
+    this.router.navigate(["/ardexFunctions"], { skipLocationChange : true });
   }
 
   setup() {
