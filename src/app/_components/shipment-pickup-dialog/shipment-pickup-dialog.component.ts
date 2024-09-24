@@ -121,7 +121,7 @@ export class ShipmentPickupDialogComponent implements OnInit {
 
   ngOnInit() 
   {
-    this.timeRangeVar = "09_12_13_16";
+    this.onDateChange();
   }
 
   getShipmentsDisplayedColumns():string[]
