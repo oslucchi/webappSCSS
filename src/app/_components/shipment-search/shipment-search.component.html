@@ -122,6 +122,12 @@
                 {{ empty }}
             </mat-cell>
         </ng-container>
+        <ng-container matColumnDef="PL">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let order;" (click)="openDocument('PL', order.orderRef)">
+                <a href="javascript: void(0);">PL</a>
+            </mat-cell>
+        </ng-container>
         <ng-container matColumnDef="OC">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let order;" (click)="openDocument('OC', order.orderRef)">

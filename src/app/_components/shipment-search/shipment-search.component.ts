@@ -66,6 +66,7 @@ export class ShipmentSearchComponent implements OnInit {
     { def: 'compositionDesign', hide: true },
     { def: 'compositionAccessories', hide: true },
     { def: 'empty1', hide: false },
+    { def: 'PL', hide: false },
     { def: 'OC', hide: false },
     { def: 'CC', hide: false },
     { def: 'DTV', hide: false }
