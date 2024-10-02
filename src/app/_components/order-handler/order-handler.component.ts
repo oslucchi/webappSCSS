@@ -526,14 +526,6 @@ export class OrderHandlerComponent implements OnInit {
         } else {
           orderHandler.details.assemblyTime = 0;
         }
-        this.service
-          .update("orders/update/" + orderHandler.details.idOrder, {
-            order: orderHandler.details,
-            updateWhat: "stats",
-          })
-          .subscribe((res: HttpResponse<any>) => {
-            console.log(res);
-          });
       });
   }
 

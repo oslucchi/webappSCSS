@@ -139,10 +139,9 @@ export class ChatComponent implements OnInit {
           break;
 
         case Message.MSG_ORDER_CHANGED:
+          console.log("Request to change an order received");
           msg.text = atob(msg.text);
-          // this.ngZone.run(() => {
-          //   this.onOrderChange.emit(msg.text);
-          // });
+          console.log("event emit");
           this.onOrderChange.emit(msg.text);
           console.log("event emitted");
           break;
