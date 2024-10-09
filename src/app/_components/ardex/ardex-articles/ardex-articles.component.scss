@@ -31,11 +31,11 @@ table {
 }
 
 
-.mat-column-idShipment {
+.mat-column-idArticle {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 40px !important;
-    width: 40px !important;
+    flex: 0 0 60px !important;
+    width: 60px !important;
     overflow-wrap: break-word;
     word-break: break-word;
     -ms-hyphens: auto;
@@ -47,7 +47,7 @@ table {
     padding-left: 8px;
     padding-right: 8px;
 }
-.mat-column-date {
+.mat-column-refERP {
     word-wrap: break-word !important;
     white-space: unset !important;
     flex: 0 0 100px !important;
@@ -61,11 +61,25 @@ table {
     padding-left: 8px;
     padding-right: 8px;
 }
-.mat-column-numOfPallets {
+.mat-column-description {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 100px !important;
-    width: 100px !important;
+    flex: 0 0 250px !important;
+    width: 250px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto; 
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.mat-column-GTIN {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 160px !important;
+    width: 160px !important;
     overflow-wrap: break-word;
     word-break: break-word;
     -ms-hyphens: auto;
@@ -77,24 +91,8 @@ table {
     padding-left: 8px;
     padding-right: 8px;
 }
-.mat-column-status {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 100px !important;
-    width: 100px !important;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    text-align: center;
-    justify-content: flex-end;
-    padding-left: 8px;
-    padding-right: 8px;
-}
 
-.mat-column-idPallet {
+.mat-column-length {
     word-wrap: break-word !important;
     white-space: unset !important;
     flex: 0 0 45px !important;
@@ -110,58 +108,11 @@ table {
     padding-left: 8px;
     padding-right: 8px;
 }
-
-
-.mat-column-barcode {
+.mat-column-width {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 200px !important;
-    width: 200px !important;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    padding-left: 8px;
-    padding-right: 8px;
-}
-
-.mat-column-ardexArticleId {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 90px !important;
-    width: 90px !important;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    padding-left: 8px;
-    padding-right: 8px;
-}
-
-.mat-column-description {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 180px !important;
-    width: 180px !important;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    padding-left: 8px;
-    padding-right: 8px;
-}
-
-.mat-column-numOfItems {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 100px !important;
-    width: 100px !important;
+    flex: 0 0 45px !important;
+    width: 45x !important;
     overflow-wrap: break-word;
     word-break: break-word;
     -ms-hyphens: auto;
@@ -173,12 +124,27 @@ table {
     padding-left: 8px;
     padding-right: 8px;
 }
-
+.mat-column-height {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 45px !important;
+    width: 45x !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    text-align: right;
+    justify-content: flex-end;
+    padding-left: 8px;
+    padding-right: 8px;
+}
 .mat-column-weight {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 70px !important;
-    width: 70px !important;
+    flex: 0 0 45px !important;
+    width: 45x !important;
     overflow-wrap: break-word;
     word-break: break-word;
     -ms-hyphens: auto;
@@ -187,38 +153,6 @@ table {
     hyphens: auto;
     text-align: right;
     justify-content: flex-end;
-    padding-left: 8px;
-    padding-right: 8px;
-}
-
-.mat-column-batch {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 200px !important;
-    width: 200px !important;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    justify-content: center;
-    text-align: center;
-    padding-left: 8px;
-    padding-right: 8px;
-}
-
-.mat-column-expiryDate {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 100px !important;
-    width: 100px !important;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto; 
     padding-left: 8px;
     padding-right: 8px;
 }

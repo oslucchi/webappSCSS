@@ -1,0 +1,55 @@
+<div style="width: 770px">
+    <mat-table [dataSource]="articleDS" id="articles" matSort>
+        <ng-container matColumnDef="idArticle">
+            <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+            <mat-cell *matCellDef="let article">
+                {{article.idArticle}}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="refERP">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Ardex ID</mat-header-cell>
+            <mat-cell *matCellDef="let article">
+                {{article.refERP}}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Descrizione</mat-header-cell>
+            <mat-cell *matCellDef="let article">
+                {{article.description}}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="GTIN">
+            <mat-header-cell *matHeaderCellDef>GTIN</mat-header-cell>
+            <mat-cell *matCellDef="let article">
+                {{article.eancode}}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="length">
+            <mat-header-cell *matHeaderCellDef>L</mat-header-cell>
+            <mat-cell *matCellDef="let article">
+                {{article.packageLength}}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="width">
+            <mat-header-cell *matHeaderCellDef>W</mat-header-cell>
+            <mat-cell *matCellDef="let article">
+                {{article.packageWidth}}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="height">
+            <mat-header-cell *matHeaderCellDef>H</mat-header-cell>
+            <mat-cell *matCellDef="let article">
+                {{article.packageHeight}}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="weight">
+            <mat-header-cell *matHeaderCellDef>Kg</mat-header-cell>
+            <mat-cell *matCellDef="let article">
+                {{article.packageWeight}}
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="getArticlesDisplayedColumns()"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: getArticlesDisplayedColumns()">
+        </mat-row>
+    </mat-table>
+</div>
