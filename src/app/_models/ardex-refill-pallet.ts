@@ -5,4 +5,6 @@ export class ArdexRefillPallet {
 	idShipment: number = 0;
 	barcode: string = "";
 	articles: ArdexRefillArticle[] = [];
+	checked: boolean = false;
+	stocked: boolean = false;
 }

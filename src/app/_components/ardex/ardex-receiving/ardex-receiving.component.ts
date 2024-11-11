@@ -13,6 +13,7 @@ import { ArdexRefillArticle } from '../../../_models/ardex-refill-article';
 import { UserProfile } from '../../../_models/user-profile';
 import { User } from '../../../_models/user';
 import { CookieService } from 'ngx-cookie-service';
+import { StorageService } from '../../../_services/storage.service';
 
 
 export const MY_FORMATS = {
@@ -57,11 +58,13 @@ export class ArdexReceivingComponent implements OnInit {
   public currentShipmentId: number = 0;
   public currentPalletId: number = 0;
   public profile: UserProfile = new UserProfile(new CookieService(new Document(), "")) ;
+  public checkmarkPath: string = "";
 
   private service: ApiService;
   private cookieService: CookieService;
   private shipmentStatusFilter: string = "";
   private STATUS_CODE: string[] = ["RCD", "PLN", "INC"];
+
 
   private shipmentsDisplayedColumns: any[] = [
     { def: "rowIndex", hide: true },
@@ -69,11 +72,14 @@ export class ArdexReceivingComponent implements OnInit {
     { def: "date", hide : false},
     { def: "numOfPallets", hide: false },
     { def: "status", hide: false },
+    { def: "checked", hide: false},
   ];
 
   private palletsDisplayedColumns: any[] = [
     { def: "idPallet", hide: false },
     { def: "barcode", hide : false},
+    { def: "checked", hide: false},
+    { def: "stocked", hide: false}
   ];
 
   private articlesDisplayedColumns: any[] = [
@@ -83,6 +89,8 @@ export class ArdexReceivingComponent implements OnInit {
     { def: "weight", hide: false },
     { def: "batch", hide : false},
     { def: "expiryDate", hide: false },
+    { def: "checked", hide: false},
+    { def: "stocked", hide: false}
   ];
 
   @ViewChild(MatSort, { static: true }) sort: MatSort = new MatSort();
@@ -90,12 +98,14 @@ export class ArdexReceivingComponent implements OnInit {
 
   constructor(private apiService: ApiService,
               private cookieServ: CookieService,
-              private dialog: MatDialog) 
+              private dialog: MatDialog,
+              private storage: StorageService) 
   {
     this.service = apiService;
     this.cookieService = cookieServ;
     this.shipmentDS = new MatTableDataSource<ArdexRefillShipment>();
     this.profile = new UserProfile(this.cookieService);
+    this.checkmarkPath = "../../../assets/img/checkmark.png";
   }
 
   ngOnInit(): void {

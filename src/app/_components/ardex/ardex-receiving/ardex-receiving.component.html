@@ -62,11 +62,18 @@
                             {{shipment.status}}
                         </mat-cell>
                     </ng-container>
-
+                    <ng-container matColumnDef="checked">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Checked</mat-header-cell>
+                        <mat-cell *matCellDef="let shipment">
+                            <div *ngIf="shipment.checked">
+                                <img [src]="checkmarkPath" alt="checkmark" style="height: 20px; width: 20px;" />
+                            </div>
+                        </mat-cell>
+                    </ng-container>
                     <mat-header-row *matHeaderRowDef="getShipmentDisplayedColumns()"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: getShipmentDisplayedColumns()" 
                              (click)="listPallets(row)"
-                             [ngStyle]="{'color': (currentShipmentId === row.idShipment) ? 'red' : 'black'}" >
+                             [ngStyle]="{'color': (currentShipmentId === row.idShipment) ? 'blue' : 'black'}" >
                     </mat-row>
                 </mat-table>
             </div>
@@ -90,7 +97,7 @@
         <td style="width: 260px; padding-left: 10px;padding-right: 10px; vertical-align: top; border: 1px solid black; border-collapse: collapse">
             <div style='min-height:350px; overflow-y:auto'>
                 <mat-table [dataSource]="palletDS" id="pallets" matSort>
-                    <ng-container matColumnDef="idPallet" [ngStyle]="{'color': (currentPalletId === pallet?.idPallet) ? 'red' : 'black'}">
+                    <ng-container matColumnDef="idPallet" [ngStyle]="{'color': (currentPalletId === pallet?.idPallet) ? 'blue' : 'black'}">
                         <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
                         <mat-cell *matCellDef="let pallet">{{pallet.idPallet}}</mat-cell>
                     </ng-container>
@@ -98,10 +105,26 @@
                         <mat-header-cell *matHeaderCellDef mat-sort-header>Barcode</mat-header-cell>
                         <mat-cell *matCellDef="let pallet">{{pallet.barcode}}</mat-cell>
                     </ng-container>
+                    <ng-container matColumnDef="checked">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Checked</mat-header-cell>
+                        <mat-cell *matCellDef="let pallet">
+                            <div *ngIf="pallet.checked">
+                                <img [src]="checkmarkPath" alt="checkmark" style="height: 20px; width: 20px;" />
+                            </div>
+                        </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="stocked">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Stocked</mat-header-cell>
+                        <mat-cell *matCellDef="let pallet">
+                            <div *ngIf="pallet.stocked">
+                                <img [src]="checkmarkPath" alt="checkmark" style="height: 20px; width: 20px;" />
+                            </div>
+                        </mat-cell>
+                    </ng-container>
 
                     <mat-header-row *matHeaderRowDef="getPalletDisplayedColumns()"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: getPalletDisplayedColumns()" (click)="listArticles(row)"
-                             [ngStyle]="{'color': (currentPalletId === row.idPallet) ? 'red' : 'black'}" >
+                             [ngStyle]="{'color': (currentPalletId === row.idPallet) ? 'blue' : 'black'}" >
                     </mat-row>
                 </mat-table>
             </div>
@@ -133,6 +156,22 @@
                     <ng-container matColumnDef="expiryDate">
                         <mat-header-cell *matHeaderCellDef mat-sort-header>Scadenza</mat-header-cell>
                         <mat-cell *matCellDef="let article">{{article.expiryDate|date:'dd/MM/yy'}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="checked">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Checked</mat-header-cell>
+                        <mat-cell *matCellDef="let article">
+                            <div *ngIf="article.checked">
+                                <img [src]="checkmarkPath" alt="checkmark" style="height: 20px; width: 20px;" />
+                            </div>
+                        </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="stocked">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Stocked</mat-header-cell>
+                        <mat-cell *matCellDef="let article">
+                            <div *ngIf="article.stocked">
+                                <img [src]="checkmarkPath" alt="checkmark" style="height: 20px; width: 20px;" />
+                            </div>
+                        </mat-cell>
                     </ng-container>
 
                     <mat-header-row *matHeaderRowDef="getArticleDisplayedColumns()"></mat-header-row>
