@@ -78,6 +78,7 @@ export class ArdexReceivingComponent implements OnInit {
   private palletsDisplayedColumns: any[] = [
     { def: "idPallet", hide: false },
     { def: "barcode", hide : false},
+    { def: "weight", hide : false},
     { def: "checked", hide: false},
     { def: "stocked", hide: false}
   ];

@@ -50,8 +50,8 @@ table {
 .mat-column-date {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 100px !important;
-    width: 100px !important;
+    flex: 0 0 80px !important;
+    width: 80px !important;
     overflow-wrap: break-word;
     word-break: break-word;
     -ms-hyphens: auto;
@@ -64,8 +64,8 @@ table {
 .mat-column-numOfPallets {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 100px !important;
-    width: 100px !important;
+    flex: 0 0 110px !important;
+    width: 110px !important;
     overflow-wrap: break-word;
     word-break: break-word;
     -ms-hyphens: auto;
@@ -125,6 +125,26 @@ table {
     hyphens: auto;
     padding-left: 8px;
     padding-right: 8px;
+}
+
+.mat-column-weight {
+    flex: 0 0 1000px !important;
+    width: 100px !important;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.mat-column-checked {
+    flex: 0 0 30px !important;
+    width: 30px !important;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.mat-column-stocked {
+    flex: 0 0 30px !important;
+    width: 30px !important;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .mat-column-ardexArticleId {

@@ -31,7 +31,7 @@
         </th>
     </tr>
     <tr>
-        <td style="width: 360px; border: 1px solid black; border-collapse: collapse; padding-left: 10px; padding-right: 10px; vertical-align: top;">
+        <td style="border: 1px solid black; border-collapse: collapse; padding-left: 10px; padding-right: 10px; vertical-align: top;">
             <div style='min-height:350px; overflow-y:auto'>
                 <mat-table [dataSource]="shipmentDS" id="shipments" matSort>
                     <ng-container matColumnDef="idShipment">
@@ -63,7 +63,7 @@
                         </mat-cell>
                     </ng-container>
                     <ng-container matColumnDef="checked">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header>Checked</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>CHK</mat-header-cell>
                         <mat-cell *matCellDef="let shipment">
                             <div *ngIf="shipment.checked">
                                 <img [src]="checkmarkPath" alt="checkmark" style="height: 20px; width: 20px;" />
@@ -94,8 +94,8 @@
                 [matMenuTriggerFor]="contextMenu">
             </div>      
        </td>
-        <td style="width: 260px; padding-left: 10px;padding-right: 10px; vertical-align: top; border: 1px solid black; border-collapse: collapse">
-            <div style='min-height:350px; overflow-y:auto'>
+        <td style="border: 1px solid black; border-collapse: collapse; padding-left: 10px;padding-right: 10px; vertical-align: top;">
+            <div style='width: 375px; min-height:350px; overflow-y:auto'>
                 <mat-table [dataSource]="palletDS" id="pallets" matSort>
                     <ng-container matColumnDef="idPallet" [ngStyle]="{'color': (currentPalletId === pallet?.idPallet) ? 'blue' : 'black'}">
                         <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
@@ -105,8 +105,12 @@
                         <mat-header-cell *matHeaderCellDef mat-sort-header>Barcode</mat-header-cell>
                         <mat-cell *matCellDef="let pallet">{{pallet.barcode}}</mat-cell>
                     </ng-container>
+                    <ng-container matColumnDef="weight">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Peso</mat-header-cell>
+                        <mat-cell *matCellDef="let pallet">{{pallet.weight}} Kg</mat-cell>
+                    </ng-container>
                     <ng-container matColumnDef="checked">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header>Checked</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>CHK</mat-header-cell>
                         <mat-cell *matCellDef="let pallet">
                             <div *ngIf="pallet.checked">
                                 <img [src]="checkmarkPath" alt="checkmark" style="height: 20px; width: 20px;" />
@@ -114,7 +118,7 @@
                         </mat-cell>
                     </ng-container>
                     <ng-container matColumnDef="stocked">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header>Stocked</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>STK</mat-header-cell>
                         <mat-cell *matCellDef="let pallet">
                             <div *ngIf="pallet.stocked">
                                 <img [src]="checkmarkPath" alt="checkmark" style="height: 20px; width: 20px;" />
@@ -130,7 +134,7 @@
             </div>
 
         </td>
-        <td style="width: 740px; padding-left: 10px; padding-right: 10px; vertical-align: top; border: 1px solid black; border-collapse: collapse">
+        <td style="border: 1px solid black; border-collapse: collapse; padding-left: 10px; padding-right: 10px; vertical-align: top;">
             <div style='min-height:350px; overflow-y:auto'>
                 <mat-table [dataSource]="articleDS" id="articles" matSort>
                     <ng-container matColumnDef="ardexArticleId">
@@ -158,7 +162,7 @@
                         <mat-cell *matCellDef="let article">{{article.expiryDate|date:'dd/MM/yy'}}</mat-cell>
                     </ng-container>
                     <ng-container matColumnDef="checked">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header>Checked</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>CHK</mat-header-cell>
                         <mat-cell *matCellDef="let article">
                             <div *ngIf="article.checked">
                                 <img [src]="checkmarkPath" alt="checkmark" style="height: 20px; width: 20px;" />
@@ -166,7 +170,7 @@
                         </mat-cell>
                     </ng-container>
                     <ng-container matColumnDef="stocked">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header>Stocked</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>STK</mat-header-cell>
                         <mat-cell *matCellDef="let article">
                             <div *ngIf="article.stocked">
                                 <img [src]="checkmarkPath" alt="checkmark" style="height: 20px; width: 20px;" />
