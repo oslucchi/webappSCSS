@@ -39,6 +39,7 @@ export const MY_FORMATS = {
   ],
 })
 export class ArdexArticleComponent implements OnInit {  
+  private tempInputValue: string = ''; // To hold temporary edited value
 
   public profile: UserProfile = new UserProfile(new CookieService(new Document(), "")) ;
 
@@ -47,7 +48,11 @@ export class ArdexArticleComponent implements OnInit {
 
   public articleList: Articles[] = [];
   public articleDS: MatTableDataSource<Articles> = new MatTableDataSource<Articles>(this.articleList);;
-
+  public ALLOW_LETTERS = 1;
+  public ALLOW_NUMBERS = 2;
+  public ALLOW_NUMBER_SIGN = 4;
+  public ALLOW_DECIMALS = 8;
+  public ALLOW_ALL = 255
 
   private articlesDisplayedColumns: any[] = [
     { def: "idArticle", hide: false },
@@ -77,6 +82,80 @@ export class ArdexArticleComponent implements OnInit {
     this.profile = new UserProfile(this.cookieService);
     this.profile.getProfile();
     this.getArticles();
+  }
+
+  // Handles input events to temporarily store text
+  handleInput(event: Event): void {
+    const target = event.target as HTMLElement;
+    this.tempInputValue = target.innerText;
+  }
+
+  combineFlags(...flags: number[]): number {
+    var retVal: number = flags.reduce((acc, flag) => acc | flag, 0)
+    console.log(retVal) ;
+    return retVal;
+  }
+
+  isCharAllowed(event: KeyboardEvent, setAllowed: number): void {
+    const charCode = event.key.charCodeAt(0);
+    var validate = false;
+
+    if (setAllowed == this.ALLOW_ALL)
+      return;
+
+    if (setAllowed & this.ALLOW_LETTERS)
+    {
+      console.log("check code " + charCode + " versus letters --> " + 
+                      ((charCode >= 65 && charCode <= 90) || 
+                       (charCode >= 97 && charCode <= 122)));
+      validate = validate || 
+                 ((charCode >= 65 && charCode <= 90) || 
+                  (charCode >= 97 && charCode <= 122)); 
+    }
+
+    if (setAllowed & this.ALLOW_NUMBERS)
+    {
+      console.log("check code " + charCode + " versus numbers --> " + (charCode >= 48 && charCode <= 57));
+      validate = validate || (charCode >= 48 && charCode <= 57);
+    }
+
+    if (setAllowed & this.ALLOW_NUMBER_SIGN)
+    {
+      console.log("check code " + charCode + " versus sign --> " + 
+                 ((charCode === 43) || 
+                  (charCode === 45)));
+      validate = validate || 
+                 ((charCode === 43) || 
+                  (charCode === 45)); 
+    }
+
+    if (setAllowed & this.ALLOW_DECIMALS)
+    {
+      console.log("check code " + charCode + " versus decimal --> " + (charCode === 46));
+      validate = validate || (charCode === 46) 
+    }    
+    console.log("va;lidate is " + validate);
+    if (!validate)
+      event.preventDefault();
+  }
+
+  // Handles Enter/Tab keys to save edits and ignore other non-printable keys
+  onKeydown(event: KeyboardEvent, index: number, attribute: keyof Articles): void {
+    if (event.key === 'Enter' || event.key === 'Tab') {
+      event.preventDefault(); // Prevent default for Enter/Tab
+      this.updateArticle(index, attribute); // Commit change
+    } else if (event.key.length > 1 && event.key !== 'Backspace' && event.key !== 'Delete') {
+      event.preventDefault(); // Ignore non-printable keys except Backspace and Delete
+    }
+  }
+
+  // Commits changes to the article list based on the edited attribute
+  updateArticle(index: number, attribute: keyof Articles): void {
+    if (attribute && this.tempInputValue) {
+      (this.articleList[index][attribute] as Articles[keyof Articles]) = this.tempInputValue;
+      this.articleDS.data = [...this.articleList]; // Update table data source
+      console.log(`Updated article[${index}].${attribute} to: ${this.tempInputValue}`);
+    }
   }
 
 
