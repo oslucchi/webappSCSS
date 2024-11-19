@@ -1,12 +1,12 @@
 <div class="header">
     <table style="height: 100% !important">
         <tr >
-            <td style='width: 33%; border: 1px solid black; vertical-align: top;'>
+            <td style='width: 33%; padding-left: 15px; border: 1px solid black; vertical-align: top;'>
                 <p style='text-align: center; font-weight:bold'>
                     FILTRI SELEZIONE ORDINE<br>
                     Valore totale ordini selezionati {{ invoiceValue | spacedCurrency : 'EUR' : true : '1.0-2' }}
                 </p>
-                <table>
+                <table style="width: 100%">
                     <tr>
                         <th style='width: 180px;'>
                             ORDINI
@@ -151,7 +151,7 @@
                     </tr>
                 </table>
             </td>
-            <td style='width: 42%; border: 1px solid black; vertical-align: top;'>
+            <td style='width: 42%; padding-left: 10px; border: 1px solid black; vertical-align: top;'>
                 <app-order-handler [orderHandler]="orderHandler"
                                    [orderList]="orderList" 
                                    [orderDetails]="orderDetails"
@@ -162,7 +162,7 @@
                                    (resetOrderStatus)="resetOrderStatus($event)" >
                 </app-order-handler>
             </td>
-            <td style='width: 25%; height: 100%; border: 1px solid black; vertical-align: top;'>
+            <td style='width: 25%; padding-left: 10px; height: 100%; border: 1px solid black; vertical-align: top;'>
                 <app-chat style="height: 100%!important" (onOrderChange)="changeOnlyIfDisplayed($event)"></app-chat>
             </td>
         </tr>
