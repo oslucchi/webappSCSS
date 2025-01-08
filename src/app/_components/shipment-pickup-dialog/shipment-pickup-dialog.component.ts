@@ -99,15 +99,15 @@ export class ShipmentPickupDialogComponent implements OnInit {
       this.showHideShipment.push(false);
       element.elements.forEach(item => {
         this.shipmentRow = new ShipmentRow();
-        this.shipmentRow.customer = element.customer;
-        this.shipmentRow.address = element.address;
-        this.shipmentRow.province = element.province;
+        this.shipmentRow.customer = element.customerDescription;
+        this.shipmentRow.address = element.customerAddress;
+        this.shipmentRow.province = element.customerState;
         this.shipmentRow.length = item.length;
         this.shipmentRow.width = item.width;
         this.shipmentRow.heigth = item.height;
         this.shipmentRow.weigth = item.weight;
-        this.shipmentRow.insurance = item.insurance;
-        this.shipmentRow.ddt = element.ddt;
+        this.shipmentRow.insurance = item.insuranceMessage;
+        this.shipmentRow.ddt = element.shipmentDocumentNo;
         this.shipmentRow.note = item.note;
         this.shipmentList.push(this.shipmentRow);
       });
@@ -189,15 +189,15 @@ export class ShipmentPickupDialogComponent implements OnInit {
           this.showHideShipment.push(false);
           element.elements.forEach(item => {
             this.shipmentRow = new ShipmentRow();
-            this.shipmentRow.customer = element.customer;
-            this.shipmentRow.address = element.address;
-            this.shipmentRow.province = element.province;
+            this.shipmentRow.customer = element.customerDescription;
+            this.shipmentRow.address = element.customerAddress;
+            this.shipmentRow.province = element.customerState;
             this.shipmentRow.length = item.length;
             this.shipmentRow.width = item.width;
             this.shipmentRow.heigth = item.height;
             this.shipmentRow.weigth = item.weight;
-            this.shipmentRow.insurance = item.insurance;
-            this.shipmentRow.ddt = element.ddt;
+            this.shipmentRow.insurance = item.insuranceMessage;
+            this.shipmentRow.ddt = element.shipmentDocumentNo;
             this.shipmentRow.note = item.note;
             this.shipmentList.push(this.shipmentRow);
           });
@@ -290,7 +290,7 @@ export class ShipmentPickupDialogComponent implements OnInit {
   toggleAllShipmentsSelection()
   {
     this.shipments.forEach((element, index) => {
-      if (this.shipments[index].pickupReuqestNo == null)
+      if (this.shipments[index].pickupRequestNo == null)
         this.shipments[index].selected = !this.shipmentSelection;
     });
   }

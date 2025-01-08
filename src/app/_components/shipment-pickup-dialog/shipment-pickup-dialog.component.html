@@ -60,18 +60,20 @@
         <th id="insurance">Assicurazione</th>
         <th id="details" >Dettagli</th>
     </tr>
-    <tr *ngFor="let shipment of shipments; index as i" [ngStyle]="shipment.pickupReuqestNo != null ? { background: '#cf1302', color: '#ffffff' } : null">
-        <span *ngIf="shipment.pickupReuqestNo == null; else alreadyRequested">
+    <tr *ngFor="let shipment of shipments; index as i" [ngStyle]="shipment.pickupRequestNo  != null ? { background: '#cf1302', color: '#ffffff' } : null">
+        <span *ngIf="shipment.pickupRequestNo == null; else alreadyRequested">
             <td id="selected"><mat-checkbox [(ngModel)]='shipment.selected' [checked]='false' (click)='toggleShipmentSelection(i);'></mat-checkbox></td>
         </span>
         <ng-template  #alreadyRequested>
             <td id="selected">&nbsp;</td>
         </ng-template>
-        <td id="customer">{{shipment.customer}}</td>
-        <td id="address">{{shipment.address}}</td>
-        <td id="province">{{shipment.province}}</td>
-        <td id="ddt" style='text-align: right;'>{{shipment.ddt}}</td>
+        <td id="customer">{{shipment.customerDescription}}</td>
+        <td id="address">{{shipment.customerAddress}}</td>
+        <td id="province">{{shipment.customerState}}</td>
+        <td id="ddt" style='text-align: right;'>{{shipment.shipmentDocumentNo}}</td>
+        <!--
         <td id="insurance" style='text-align: right;'>{{shipment.insuranceMessage}}</td>
+        -->
         <td id="details" style='text-align: left;'>
             <div>
                 <span *ngIf="showHideShipment[i]; else elseBlock">
@@ -83,7 +85,7 @@
                                 <th id="weight">Kg</th>
                             </tr>
                             <tr *ngFor="let item of shipments[i].elements;"  (click)='changeShipmentVisibility(i);'>
-                                <td id="GLSRef">{{item.barCode}}</td>
+                                <td id="GLSRef">{{item.idShipment}}</td>
                                 <td id="GLSArticle">{{item.note}}</td>
                                 <td id="weight">{{item.weight}}</td>
                             </tr>
@@ -100,7 +102,7 @@
                                 <th id="note">Note</th>
                             </tr>
                             <tr *ngFor="let item of shipments[i].elements;"  (click)='changeShipmentVisibility(i);'>
-                                <td id="barCode">{{item.barCode}}</td>
+                                <td id="barCode">{{item.idShipment}}</td>
                                 <td id="length">{{item.length}}</td>
                                 <td id="width">{{item.width}}</td>
                                 <td id="height">{{item.height}}</td>
