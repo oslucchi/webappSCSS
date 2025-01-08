@@ -65,6 +65,7 @@ export class ArdexMainComponent implements OnInit {
   }
 
   articles(){
+    console.log("Showing articles");
     this.articlesShow = true;
     this.recPrgShow = false;
     this.recHisShow = false;

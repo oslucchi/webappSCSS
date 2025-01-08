@@ -13,6 +13,7 @@ import { ArdexRefillArticle } from '../../../_models/ardex-refill-article';
 import { UserProfile } from '../../../_models/user-profile';
 import { User } from '../../../_models/user';
 import { CookieService } from 'ngx-cookie-service';
+import { StorageService } from '../../../_services/storage.service';
 
 
 export const MY_FORMATS = {
@@ -43,21 +44,27 @@ export const MY_FORMATS = {
   ],
 })
 export class ArdexReceivingComponent implements OnInit {  
+  file: File | any = null;
   public shipmentsList: ArdexRefillShipment[] = [];
   public palletList: ArdexRefillPallet[] = [];
   public articleList: ArdexRefillArticle[] = [];
   public articleDS: MatTableDataSource<ArdexRefillArticle> = new MatTableDataSource<ArdexRefillArticle>(this.articleList);;
   public shipmentDS: MatTableDataSource<ArdexRefillShipment> = new MatTableDataSource<ArdexRefillShipment>(this.shipmentsList);;
   public palletDS: MatTableDataSource<ArdexRefillPallet> = new MatTableDataSource<ArdexRefillPallet>(this.palletList);
-  public profile: UserProfile;
   public menuEntries : string[] = ["", "Print shipment"];
   public shipment: ArdexRefillShipment | undefined;
+  public pallet: ArdexRefillPallet | undefined;
   public contextMenuPosition = { x: '0px', y: '0px' };
+  public currentShipmentId: number = 0;
+  public currentPalletId: number = 0;
+  public profile: UserProfile = new UserProfile(new CookieService(new Document(), "")) ;
+  public checkmarkPath: string = "";
 
   private service: ApiService;
   private cookieService: CookieService;
   private shipmentStatusFilter: string = "";
   private STATUS_CODE: string[] = ["RCD", "PLN", "INC"];
+
 
   private shipmentsDisplayedColumns: any[] = [
     { def: "rowIndex", hide: true },
@@ -65,38 +72,46 @@ export class ArdexReceivingComponent implements OnInit {
     { def: "date", hide : false},
     { def: "numOfPallets", hide: false },
     { def: "status", hide: false },
+    { def: "checked", hide: false},
   ];
 
   private palletsDisplayedColumns: any[] = [
     { def: "idPallet", hide: false },
     { def: "barcode", hide : false},
+    { def: "weight", hide : false},
+    { def: "checked", hide: false},
+    { def: "stocked", hide: false}
   ];
 
   private articlesDisplayedColumns: any[] = [
     { def: "ardexArticleId", hide: false },
+    { def: "description", hide: false },
     { def: "numOfItems", hide : false},
     { def: "weight", hide: false },
     { def: "batch", hide : false},
     { def: "expiryDate", hide: false },
+    { def: "checked", hide: false},
+    { def: "stocked", hide: false}
   ];
 
-  @ViewChild(MatSort, { static: true }) sort: MatSort | undefined;
+  @ViewChild(MatSort, { static: true }) sort: MatSort = new MatSort();
   @ViewChild(MatMenuTrigger, { static: true }) contextMenu: MatMenuTrigger | undefined;
 
   constructor(private apiService: ApiService,
               private cookieServ: CookieService,
-              private dialog: MatDialog) 
+              private dialog: MatDialog,
+              private storage: StorageService) 
   {
     this.service = apiService;
     this.cookieService = cookieServ;
     this.shipmentDS = new MatTableDataSource<ArdexRefillShipment>();
     this.profile = new UserProfile(this.cookieService);
-    this.profile.filters.filterArdex[0] = true;
-    this.profile.filters.filterArdex[1] = true;
-    this.profile.filters.filterArdex[2] = true;
+    this.checkmarkPath = "../../../assets/img/checkmark.png";
   }
 
   ngOnInit(): void {
+    this.profile = new UserProfile(this.cookieService);
+    this.profile.getProfile();
     this.getShipments();
   }
 
@@ -144,26 +159,43 @@ export class ArdexReceivingComponent implements OnInit {
             if (!(res.body.shipments.length < 1 || res.body.shipments == undefined))
             {
               this.shipmentsList = res.body.shipments;
+              this.currentShipmentId = this.shipmentsList[0].idShipment;
               this.palletList = this.shipmentsList[0].pallets;
+              this.currentPalletId = this.palletList[0].idPallet;
               this.articleList = this.palletList[0].articles;
             }
             this.shipmentDS = new MatTableDataSource<ArdexRefillShipment>(this.shipmentsList);
             this.palletDS =  new MatTableDataSource<ArdexRefillPallet>(this.palletList);
             this.articleDS = new MatTableDataSource<ArdexRefillArticle>(this.articleList);
+            this.shipmentDS.sort = this.sort;
+            this.palletDS.sort = this.sort;
+            this.articleDS.sort = this.sort;
+
         }
       );
     }
   }
 
   listPallets(row: any) {
-    this.palletList = row.pallets;    
+    this.shipment = row;
+    this.currentShipmentId = row.idShipment;
+    this.currentPalletId = 0;
+    this.palletList = row.pallets;
     this.palletDS =  new MatTableDataSource<ArdexRefillPallet>(this.palletList);
-  }
+    this.currentPalletId = this.palletList[0].idPallet;
+    this.articleList = this.palletList[0].articles;    
+    this.articleDS =  new MatTableDataSource<ArdexRefillArticle>(this.articleList);
+    this.palletDS.sort = this.sort;
+    this.articleDS.sort = this.sort;
+}
 
   listArticles(row: any) {
+    this.pallet = row;
+    this.currentPalletId = row.idPallet;
     this.articleList = row.articles;    
     this.articleDS =  new MatTableDataSource<ArdexRefillArticle>(this.articleList);
-  }
+    this.articleDS.sort = this.sort;
+}
 
   changeProfileFilters(event: MatCheckboxChange) 
   {
@@ -187,6 +219,7 @@ export class ArdexReceivingComponent implements OnInit {
         this.profile.filters.filterArdex[2] = event.checked;
         break;
     }
+    this.profile.setProfile();
     this.getShipments();
   }
 
@@ -236,6 +269,36 @@ export class ArdexReceivingComponent implements OnInit {
   printoutShipment(shipment: ArdexRefillShipment | undefined){
     alert("printout shipment " + shipment!.idShipment);
   }
+/*
+  uploaRefillMessage() {
+    let formData: FormData = new FormData();
+    if (this.file != null) {
+      formData.append("file", this.file.name);
+      this.service
+        .uploadToURL(
+          "ardex/uploadRefillMessage",
+          formData
+        )
+        .subscribe((res: HttpResponse<any>) => {
+          if (res.body.DTVName != null) {
+            this.orderHandler.details.DTVName = res.body.DTVName;
+            this.orderHandler.details.DTVDate = res.body.DTVDate;
+          }
+          if (res.body.DBError != null && res.body.DBError != "") {
+            window.alert(
+              "Cariacamento completato con errore " + res.body.DBError
+            );
+          } else {
+            window.alert("Caricamento completato");
+            this.file = null;
+          }
+          console.log(res);
+        });
+    } else {
+      window.alert("Empty list of files");
+    }
+  }
+  */
 }
 
 export interface MenuParm {

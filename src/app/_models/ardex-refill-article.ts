@@ -1,5 +1,6 @@
 export class ArdexRefillArticle {
     idArticle: number = 0;
+	description: string = "";
 	idPallet: number = 0;
 	ardexArticleId: string = "";
 	expiryDate: Date = new Date();

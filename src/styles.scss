@@ -80,7 +80,6 @@
        color:  green;
        font-size: 8px;
     }
-
     .mat-pseudo-checkbox-checked {
         background-color: #CF5F5FEE;
     }
@@ -98,8 +97,8 @@
     }
 
     .mat-mdc-checkbox {
-         height: 30px;
-            label {
+        height: 30px;
+        label {
             cursor: pointer;
             font-size: 12px;
         }
@@ -109,8 +108,10 @@
         --mdc-checkbox-selected-focus-icon-color: #CF5F5FEE;
         --mdc-checkbox-selected-hover-icon-color: #CF5F5FEE;
         --mdc-checkbox-selected-pressed-icon-color: #CF5F5FEE;
-        --mdc-checkbox-state-layer-size: 0;
         --mdc-checkbox-unselected-focus-state-layer-opacity: 0;
+/*
+        --mdc-checkbox-state-layer-size: 0;
+*/
 
         &.mat-mdc-checkbox-disabled {
             .mdc-checkbox {
@@ -119,7 +120,6 @@
                 }
             }
         }
-
         .mdc-form-field {
             --mdc-typography-body2-letter-spacing: normal;
         }

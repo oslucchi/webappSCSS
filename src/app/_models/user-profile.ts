@@ -35,6 +35,7 @@ export class UserProfile {
         this.filters.filterWarehouse = [ false, false, false ];
         this.filters.filterShipment = [ false ];
         this.filters.filterInvoice = [ false ];
+        this.filters.filterArdex = [ false, false, false ];
     }
     
     getProfile()
@@ -50,6 +51,7 @@ export class UserProfile {
             this.filters.filterWarehouse = [false, false,  false];
             this.filters.filterShipment = [false];
             this.filters.filterInvoice = [false];
+            this.filters.filterArdex = [ false, false, false ];
         }
         else
         {
@@ -58,6 +60,7 @@ export class UserProfile {
             this.filters.filterWarehouse = filter.filterWarehouse;
             this.filters.filterShipment = filter.filterShipment;
             this.filters.filterInvoice = ("filterInvoice" in filter ? filter.filterInvoice : [ false ]);
+            this.filters.filterArdex = filter.filterArdex;
         }
     }
 

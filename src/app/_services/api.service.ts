@@ -25,6 +25,7 @@ export class ApiService {
       // Server-side errors
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.message}`;
     }
+    console.log("Got the error '" + errorMessage + "'")
     window.alert(errorMessage);
     return throwError(new Error(errorMessage));
   }

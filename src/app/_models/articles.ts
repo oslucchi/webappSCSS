@@ -1,7 +1,8 @@
 export class Articles {
     idArticle: number = 0;
 	refERP: string = "";
-	description: string = "";
+	description: string = ""
+	EANCode: string = "";
 	length: number = 0;
 	width: number = 0;
 	heigth: number = 0;

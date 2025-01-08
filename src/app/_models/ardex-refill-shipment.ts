@@ -6,4 +6,5 @@ export class ArdexRefillShipment {
 	numOfPallets: number = 0;
 	status: string = "";
 	pallets: ArdexRefillPallet[] = [];
+	checked: boolean = false;
 }

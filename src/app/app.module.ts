@@ -46,6 +46,7 @@ import { ShipmentDetailsViewerComponent } from './_components/shipment-details-v
 import { ArdexMainComponent } from './_components/ardex/ardex-main/ardex-main.component';
 import { ArdexReceivingComponent } from "./_components/ardex/ardex-receiving/ardex-receiving.component";
 import { SpacedCurrencyPipe } from "./_pipes/spaced-currency";
+import { ArdexArticleComponent } from "./_components/ardex/ardex-articles/ardex-articles.component";
 
 @NgModule({ 
     imports: [
@@ -93,6 +94,7 @@ import { SpacedCurrencyPipe } from "./_pipes/spaced-currency";
         ShipmentDetailsViewerComponent,
         ArdexMainComponent,
         ArdexReceivingComponent,
+        ArdexArticleComponent,
         SpacedCurrencyPipe
     ],
     bootstrap: [AppComponent],

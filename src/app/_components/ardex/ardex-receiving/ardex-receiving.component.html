@@ -1,28 +1,37 @@
 
-<table>
+<table >
     <tr>
         <th>
             <div>SPEDIZIONI</div>
             <div>
-                <mat-checkbox class="example-margin" id="chkRCD" 
-                        [(ngModel)]="profile.filters.filterArdex[0]" (change)="changeProfileFilters($event)">Recevute</mat-checkbox>
-                &nbsp;
-                <mat-checkbox class="example-margin" id="chkPLN" 
-                        [(ngModel)]="profile.filters.filterArdex[1]" (change)="changeProfileFilters($event)">Pianificate</mat-checkbox>
-                &nbsp;
-                <mat-checkbox class="example-margin" id="chkINC" 
-                        [(ngModel)]="profile.filters.filterArdex[2]" (change)="changeProfileFilters($event)">In scarico</mat-checkbox>
+                <mat-checkbox labelPosition="after" id='chkRCD' [(ngModel)]="profile.filters.filterArdex[0]"
+                              [checked]="profile.filters.filterArdex[0]"
+                              (change)="changeProfileFilters($event)">
+                    Storico
+                </mat-checkbox>                            
+                <mat-checkbox labelPosition="after" id='chkPLN' [(ngModel)]="profile.filters.filterArdex[1]"
+                              [checked]="profile.filters.filterArdex[1]"
+                              (change)="changeProfileFilters($event)">
+                    Pianificate
+                </mat-checkbox>                            
+                <mat-checkbox labelPosition="after" id='chkINC' [(ngModel)]="profile.filters.filterArdex[2]"
+                              [checked]="profile.filters.filterArdex[2]"
+                              (change)="changeProfileFilters($event)">
+                    Da scaricare
+                </mat-checkbox>                            
             </div>
         </th>
         <th>
-            PALLET
+            PALLET <br>
+            {{currentShipmentId == 0 ? '' : 'Shipment: ' + currentShipmentId}}
         </th>
         <th>
-            ARTICOLI
+            ARTICOLI<br>
+            {{currentPalletId == 0 ? '' : 'Pallet: ' + currentPalletId}}
         </th>
     </tr>
     <tr>
-        <td style="border: 1px solid black; border-collapse: collapse;">
+        <td style="border: 1px solid black; border-collapse: collapse; padding-left: 10px; padding-right: 10px; vertical-align: top;">
             <div style='min-height:350px; overflow-y:auto'>
                 <mat-table [dataSource]="shipmentDS" id="shipments" matSort>
                     <ng-container matColumnDef="idShipment">
@@ -53,10 +62,18 @@
                             {{shipment.status}}
                         </mat-cell>
                     </ng-container>
-
+                    <ng-container matColumnDef="checked">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>CHK</mat-header-cell>
+                        <mat-cell *matCellDef="let shipment">
+                            <div *ngIf="shipment.checked">
+                                <img [src]="checkmarkPath" alt="checkmark" style="height: 20px; width: 20px;" />
+                            </div>
+                        </mat-cell>
+                    </ng-container>
                     <mat-header-row *matHeaderRowDef="getShipmentDisplayedColumns()"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: getShipmentDisplayedColumns()" 
-                             (click)="listPallets(row)">
+                             (click)="listPallets(row)"
+                             [ngStyle]="{'color': (currentShipmentId === row.idShipment) ? 'blue' : 'black'}" >
                     </mat-row>
                 </mat-table>
             </div>
@@ -77,30 +94,56 @@
                 [matMenuTriggerFor]="contextMenu">
             </div>      
        </td>
-        <td style="border: 1px solid black; border-collapse: collapse">
-            <div style='min-height:350px; overflow-y:auto'>
-                <mat-table [dataSource]="palletDS" id="pallets">
-                    <ng-container matColumnDef="idPallet">
+        <td style="border: 1px solid black; border-collapse: collapse; padding-left: 10px;padding-right: 10px; vertical-align: top;">
+            <div style='width: 375px; min-height:350px; overflow-y:auto'>
+                <mat-table [dataSource]="palletDS" id="pallets" matSort>
+                    <ng-container matColumnDef="idPallet" [ngStyle]="{'color': (currentPalletId === pallet?.idPallet) ? 'blue' : 'black'}">
                         <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
                         <mat-cell *matCellDef="let pallet">{{pallet.idPallet}}</mat-cell>
                     </ng-container>
                     <ng-container matColumnDef="barcode">
-                        <mat-header-cell *matHeaderCellDef>Barcode</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Barcode</mat-header-cell>
                         <mat-cell *matCellDef="let pallet">{{pallet.barcode}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="weight">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Peso</mat-header-cell>
+                        <mat-cell *matCellDef="let pallet">{{pallet.weight}} Kg</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="checked">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>CHK</mat-header-cell>
+                        <mat-cell *matCellDef="let pallet">
+                            <div *ngIf="pallet.checked">
+                                <img [src]="checkmarkPath" alt="checkmark" style="height: 20px; width: 20px;" />
+                            </div>
+                        </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="stocked">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>STK</mat-header-cell>
+                        <mat-cell *matCellDef="let pallet">
+                            <div *ngIf="pallet.stocked">
+                                <img [src]="checkmarkPath" alt="checkmark" style="height: 20px; width: 20px;" />
+                            </div>
+                        </mat-cell>
                     </ng-container>
 
                     <mat-header-row *matHeaderRowDef="getPalletDisplayedColumns()"></mat-header-row>
-                    <mat-row *matRowDef="let row; columns: getPalletDisplayedColumns()" (click)="listArticles(row)"></mat-row>
+                    <mat-row *matRowDef="let row; columns: getPalletDisplayedColumns()" (click)="listArticles(row)"
+                             [ngStyle]="{'color': (currentPalletId === row.idPallet) ? 'blue' : 'black'}" >
+                    </mat-row>
                 </mat-table>
             </div>
 
         </td>
-        <td style="border: 1px solid black; border-collapse: collapse">
+        <td style="border: 1px solid black; border-collapse: collapse; padding-left: 10px; padding-right: 10px; vertical-align: top;">
             <div style='min-height:350px; overflow-y:auto'>
                 <mat-table [dataSource]="articleDS" id="articles" matSort>
                     <ng-container matColumnDef="ardexArticleId">
                         <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
                         <mat-cell *matCellDef="let article">{{article.ardexArticleId}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="description">
+                        <mat-header-cell *matHeaderCellDef>Descrizione</mat-header-cell>
+                        <mat-cell *matCellDef="let article">{{article.description}}</mat-cell>
                     </ng-container>
                     <ng-container matColumnDef="numOfItems">
                         <mat-header-cell *matHeaderCellDef>Quantità</mat-header-cell>
@@ -117,6 +160,22 @@
                     <ng-container matColumnDef="expiryDate">
                         <mat-header-cell *matHeaderCellDef mat-sort-header>Scadenza</mat-header-cell>
                         <mat-cell *matCellDef="let article">{{article.expiryDate|date:'dd/MM/yy'}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="checked">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>CHK</mat-header-cell>
+                        <mat-cell *matCellDef="let article">
+                            <div *ngIf="article.checked">
+                                <img [src]="checkmarkPath" alt="checkmark" style="height: 20px; width: 20px;" />
+                            </div>
+                        </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="stocked">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>STK</mat-header-cell>
+                        <mat-cell *matCellDef="let article">
+                            <div *ngIf="article.stocked">
+                                <img [src]="checkmarkPath" alt="checkmark" style="height: 20px; width: 20px;" />
+                            </div>
+                        </mat-cell>
                     </ng-container>
 
                     <mat-header-row *matHeaderRowDef="getArticleDisplayedColumns()"></mat-header-row>
