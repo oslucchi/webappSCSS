@@ -19,6 +19,7 @@ export class ShipmentItem {
      value: number = 0;
      insuranceMessage: string = "";
      note: string = "";
+     selected: boolean = false;
 };
 
 export class Shipments {
