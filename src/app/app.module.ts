@@ -6,7 +6,7 @@ import { AppComponent } from "./app.component";
 import { LoginComponent } from "./_components/login/login.component";
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
-import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { HttpClientModule, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { OrdersComponent } from "./_components/orders/orders.component";
 import { MatTableModule } from "@angular/material/table";
 
@@ -25,7 +25,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { OrderHandlerComponent } from "./_components/order-handler/order-handler.component";
 import { MessageBoxDialog } from "./_components/msg-box/msg-box.component";
 import { MessageBox } from "./_components/msg-box/msg-box.provider";
-import { ShipmentPickupDialogComponent } from "./_components/shipment-pickup-dialog/shipment-pickup-dialog.component";
 import { AddShipmentComponent } from "./_components/add-shipment/add-shipment.component";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MatInputNumericDirective } from "./_directives/mat-input-numeric.directive";
@@ -47,6 +46,9 @@ import { ArdexMainComponent } from './_components/ardex/ardex-main/ardex-main.co
 import { ArdexReceivingComponent } from "./_components/ardex/ardex-receiving/ardex-receiving.component";
 import { SpacedCurrencyPipe } from "./_pipes/spaced-currency";
 import { ArdexArticleComponent } from "./_components/ardex/ardex-articles/ardex-articles.component";
+import { NgIncludeDirective } from "./_directives/ngInclude";
+import { ShipmentCloseComponent } from "./_components/shipment-pickup-dialog/shipment-close.component";
+import { ShipmentPickupComponent } from "./_components/shipment-pickup-dialog/shipment-pickup.component";
 
 @NgModule({ 
     imports: [
@@ -70,6 +72,7 @@ import { ArdexArticleComponent } from "./_components/ardex/ardex-articles/ardex-
         MatFormFieldModule, 
         MatLabel, 
         MatInput,
+        HttpClientModule
     ], 
     declarations: [
         AppComponent,
@@ -78,7 +81,8 @@ import { ArdexArticleComponent } from "./_components/ardex/ardex-articles/ardex-
         OrderHandlerComponent,
         InventoryComponent,
         MessageBoxDialog,
-        ShipmentPickupDialogComponent,
+        ShipmentCloseComponent,
+        ShipmentPickupComponent,
         PackagingDialogComponent,
         AddShipmentComponent,
         MatInputNumericDirective,
@@ -95,7 +99,8 @@ import { ArdexArticleComponent } from "./_components/ardex/ardex-articles/ardex-
         ArdexMainComponent,
         ArdexReceivingComponent,
         ArdexArticleComponent,
-        SpacedCurrencyPipe
+        SpacedCurrencyPipe,
+        NgIncludeDirective
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA], 

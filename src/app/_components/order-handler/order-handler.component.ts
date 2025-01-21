@@ -10,17 +10,13 @@ import { UserProfileConstants, UserProfile } from "../../_models/user-profile";
 import { EventEmitter } from "@angular/core";
 import { StatusItem } from "../../_models/status-item";
 import { ListItem } from "../../_models/list-item";
-import { formatDate } from "@angular/common";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
-import { ShipmentPickupDialogComponent } from "../../_components/shipment-pickup-dialog/shipment-pickup-dialog.component";
 import { AddShipmentComponent } from "../add-shipment/add-shipment.component";
-import { OrderShipments } from "../../_models/order-shipments";
-import { MomentDateAdapter } from "@angular/material-moment-adapter";
-import * as moment from "moment";
 import { OrderStatusChangeEmailComponent } from "../order-status-change-email/order-status-change-email.component";
 import { PackagingDialogComponent } from "../packaging-dialog/packaging-dialog.component";
 import { ChgPkgComponentComponent } from "../chg-pkg-component/chg-pkg-component.component";
-import { CookieService } from "ngx-cookie-service";
+import { ShipmentPickupComponent } from "../shipment-pickup-dialog/shipment-pickup.component";
+import { ShipmentCloseComponent } from "../shipment-pickup-dialog/shipment-close.component";
 
 export const MY_FORMATS = {
   parse: {
@@ -143,6 +139,35 @@ export class OrderHandlerComponent implements OnInit {
       });
   }
 
+  handleClosure() {
+    this.service
+      .post("orders/fetchParcelsToClose", {
+        forwarder: "GLS",
+      })
+      .subscribe((res: HttpResponse<any>) => {
+        console.log(res);
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = false;
+        dialogConfig.autoFocus = true;
+        dialogConfig.hasBackdrop = true;
+
+        dialogConfig.data = {
+          id: 1,
+          title: "Chiusura spedizioni",
+          message: "close",
+          shipments: res.body.shipmentList,
+          forwarder: "GLS",
+        };
+
+        dialogConfig.height = "400px";
+        dialogConfig.width = "600px";
+
+        this.dialog.open(ShipmentCloseComponent, dialogConfig);
+      });
+  }
+
+
   mailPickup() {
     this.service
       .post("orders/createShipments", {
@@ -159,7 +184,7 @@ export class OrderHandlerComponent implements OnInit {
         dialogConfig.data = {
           id: 1,
           title: "Gestione richiesta di pick a vettore",
-          message: "funziona?",
+          message: "pickup",
           shipments: res.body.shipmentList,
           forwarder: "CES",
         };
@@ -167,7 +192,7 @@ export class OrderHandlerComponent implements OnInit {
         dialogConfig.height = "800px";
         dialogConfig.width = "1600px";
 
-        this.dialog.open(ShipmentPickupDialogComponent, dialogConfig);
+        this.dialog.open(ShipmentPickupComponent, dialogConfig);
       });
   }
 
@@ -187,7 +212,7 @@ export class OrderHandlerComponent implements OnInit {
       formData.append("file", this.file.name);
       this.service
         .uploadToURL(
-          "orders/uploadDDT/" + this.orderHandler.details.orderRef,
+          "orders/uploadDDT/" + this.orderHandler.details.orderRef.replaceAll("%", "%25").replaceAll(" ", "%20"),
           formData
         )
         .subscribe((res: HttpResponse<any>) => {

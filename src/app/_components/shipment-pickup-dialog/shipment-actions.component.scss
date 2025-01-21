@@ -6,6 +6,13 @@
     cursor: pointer;
 }
 
+.caption {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+}
+
 table th, td {
     font-family: Roboto,"Helvetica Neue",sans-serif;
 }
@@ -40,6 +47,21 @@ table.shipments th#customer,td#customer {
 }
 
 table.shipments th#address,td#address {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 18% !important;
+    width: 18% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    padding: 2px;
+}
+
+table.shipments th#shipmentNo,td#shipmentNo {
     word-wrap: break-word !important;
     white-space: unset !important;
     flex: 0 0 18% !important;

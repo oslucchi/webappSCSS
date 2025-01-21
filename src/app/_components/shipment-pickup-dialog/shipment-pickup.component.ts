@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -30,9 +30,9 @@ export const MY_FORMATS = {
 };
 
 @Component({
-  selector: 'app-shipment-pickup-dialog',
-  templateUrl: './shipment-pickup-dialog.component.html',
-  styleUrls: ['./shipment-pickup-dialog.component.scss'],
+  selector: 'app-shipment-pickup',
+  templateUrl: './shipment-pickup.component.html',
+  styleUrls: ['./shipment-actions.component.scss'],
   providers: [{
     provide: MAT_DATE_LOCALE,
     useValue: 'it'
@@ -43,7 +43,9 @@ export const MY_FORMATS = {
   }]
 })
 
-export class ShipmentPickupDialogComponent implements OnInit {
+
+export class ShipmentPickupComponent implements OnInit {
+  @Input() shipment: any; // Bind data dynamically
   private shipmentsDisplayedColumns: any[] = [
     { def: 'selected', hide: false }, 
     { def: 'customer', hide: false }, 
@@ -84,15 +86,17 @@ export class ShipmentPickupDialogComponent implements OnInit {
   private shipmentList: ShipmentRow[] = [];
   private shipmentRow: ShipmentRow = new ShipmentRow();
   public shipmentSelection:boolean = false;
+  public data: any;
 
-  constructor(private dialogRef: MatDialogRef<ShipmentPickupDialogComponent>,
+  constructor(private dialogRef: MatDialogRef<ShipmentPickupComponent>,
               private apiService: ApiService,
               private mb:MessageBox,
               @Inject(MAT_DIALOG_DATA) data: any) 
   {
     var counter: number = 0;
-    console.log(data.shipments);
-    this.dataSourceShipments = this.shipments = data.shipments;
+    this.data = data;
+    console.log(this.data.shipments);
+    this.dataSourceShipments = this.shipments = this.data.shipments;
     this.shipmentList = [];
     this.showHideShipment = [];
     this.shipments.forEach(element => {
@@ -113,9 +117,9 @@ export class ShipmentPickupDialogComponent implements OnInit {
       });
     });
     this.dataSourceRow = new MatTableDataSource<ShipmentRow>(this.shipmentList);
-    this.title = data.title;
-    this.forwarderVar = this.forwarder = data.forwarder;
-    this.service = apiService;
+    this.title = this.data.title;
+    this.forwarderVar = this.forwarder = this.data.forwarder;
+    this.service = this.apiService;
     this.shipmentSelection = false;
   }
 

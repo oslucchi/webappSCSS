@@ -293,8 +293,10 @@
             <button *ngIf="attributeInSet(['PRE', 'RDY'], orderHandler.details.status)" mat-button id="printLab" (click)="printLabels()">Etichette</button>
         </td>
         <td style='text-align: left;  width: 25% !important'>
-            <button *ngIf="attributeInSet(['RDY'], orderHandler.details.status) && orderHandler.details.forwarder!='CLI'" 
+            <button *ngIf="attributeInSet(['RDY'], orderHandler.details.status)" 
                     mat-button id="mailPick" (click)="mailPickup()">Mail Pickup</button>
+            <button *ngIf="attributeInSet(['SHI'], orderHandler.details.status)" 
+                    mat-button id="handlClosure" (click)="handleClosure()">Chiudi sped</button>
         </td>
         <td colspan="2" style='text-align: left;'>
             <div *ngIf="attributeInSet(['PRE', 'RDY', 'SHI', 'INV'], orderHandler.details.status)">
