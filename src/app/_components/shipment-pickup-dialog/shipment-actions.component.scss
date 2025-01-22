@@ -4,6 +4,17 @@
     margin:0;
     padding:0;
     cursor: pointer;
+    font-size: x-large;
+}
+
+.details-container {
+    display: flex; /* Enables horizontal alignment */
+    align-items: center; /* Vertically centers items */
+    gap: 10px; /* Adds spacing between the button and the table */
+}
+
+.details-container table {
+    margin: 0; /* Ensures no additional margin is applied to the table */
 }
 
 .caption {
@@ -20,23 +31,36 @@ table th, td {
 table.shipments th, td {
 	/* border: 1px solid black; for older IE */
     padding: 5px;
+	border: 1px solid black; 
+
 }
 
-table.shipmentsRow th, td {
-    width: 100%;
+table.shipmentsRow {
+    width: 100% !important;
     /* border: 1px solid black; for older IE */
 }
 
-table.shipments th#selected,td#selected{
-	width: 3%;
-    text-align: center;
+table.shipments th#selected,
+table.shipments td#selected {
+    flex: 0 0 5% !important;
+    width: 5% !important;
+    vertical-align: middle; /* Vertically center the content in the cell */
+    text-align: center; /* Horizontally center the content in the cell */
+    padding: 0; /* Remove any extra padding */
+}
+
+table.shipments td#selected mat-checkbox {
+    display: inline-flex; /* Use inline-flex for better alignment */
+    align-items: center; /* Vertically align items in the middle */
+    justify-content: center; /* Horizontally center items */
+    height: 100%; /* Ensure the checkbox spans the full cell height */
 }
 
 table.shipments th#customer,td#customer {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 20% !important;
-    width: 20% !important;
+    flex: 0 0 15% !important;
+    width: 15% !important;
     overflow-wrap: break-word;
     word-wrap: break-word; 
     word-break: break-word;
@@ -49,8 +73,8 @@ table.shipments th#customer,td#customer {
 table.shipments th#address,td#address {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 18% !important;
-    width: 18% !important;
+    flex: 0 0 15% !important;
+    width: 15% !important;
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word;
@@ -64,8 +88,8 @@ table.shipments th#address,td#address {
 table.shipments th#shipmentNo,td#shipmentNo {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 18% !important;
-    width: 18% !important;
+    flex: 0 0 10% !important;
+    width: 10% !important;
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word;
@@ -124,8 +148,8 @@ table.shipments th#insurance,td#insurance {
 table.shipments th#sNote,td#sNote {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 10% !important;
-    width: 10% !important;
+    flex: 0 0 20% !important;
+    width: 20% !important;
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word;
@@ -138,16 +162,18 @@ table.shipments th#sNote,td#sNote {
 
 
 table.shipments th#details,td#details {
-    width: 37% !important;
-    text-align: center;
+    width: 35% !important;
+    flex: 0 0 35% !important;
+    text-align: left !important;
+    justify-content: flex-end;      
 }
 
 table.shipmentsRow th#barCode,td#barCode {
     word-wrap: break-word !important;
     word-break: break-word;
     white-space: unset !important;
-    flex: 0 0 25% !important;
-    width: 25% !important;
+    flex: 0 0 35% !important;
+    width: 35% !important;
     overflow-wrap: break-word;
     text-align: left !important;
     justify-content: flex-end;      
@@ -161,8 +187,8 @@ table.shipmentsRow th#GLSRef,td#GLSRef {
     word-wrap: break-word !important;
     word-break: break-word;
     white-space: unset !important;
-    flex: 0 0 38% !important;
-    width: 38% !important;
+    flex: 0 0 25% !important;
+    width: 25% !important;
     text-align: left !important;
     overflow-wrap: break-word;
     -ms-hyphens: auto;
@@ -175,8 +201,8 @@ table.shipmentsRow th#GLSArticle,td#GLSArticle {
     word-wrap: break-word !important;
     word-break: break-word;
     white-space: unset !important;
-    flex: 0 0 52% !important;
-    width: 52% !important;
+    flex: 0 0 65% !important;
+    width: 65% !important;
     text-align: left !important;
     overflow-wrap: break-word;
     -ms-hyphens: auto;
@@ -249,8 +275,8 @@ table.shipmentsRow th#weight,td#weight {
 table.shipmentsRow th#note,td#note {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 35% !important;
-    width: 35% !important;
+    flex: 0 0 25% !important;
+    width: 25% !important;
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word;

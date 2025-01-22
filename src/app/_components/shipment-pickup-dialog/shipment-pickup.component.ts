@@ -177,7 +177,7 @@ export class ShipmentPickupComponent implements OnInit {
     console.log("get shipments for forwarder: '" + event + "'");
     this.service
     .post(
-      'orders/createShipments',
+      'orders/fetchShipments',
       {
         'forwarder' : this.forwarderVar
       }

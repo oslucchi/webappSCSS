@@ -170,7 +170,7 @@ export class OrderHandlerComponent implements OnInit {
 
   mailPickup() {
     this.service
-      .post("orders/createShipments", {
+      .post("orders/fetchShipments", {
         forwarder: "CES",
       })
       .subscribe((res: HttpResponse<any>) => {
@@ -235,7 +235,7 @@ export class OrderHandlerComponent implements OnInit {
     }
   }
 
-  changPackaging() {
+  changePackaging() {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = false;
