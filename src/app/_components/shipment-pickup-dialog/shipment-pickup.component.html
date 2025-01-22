@@ -103,7 +103,7 @@
                                 <th id="weight">Kg</th>
                             </tr>
                             <tr *ngFor="let item of shipments[i].elements;"  (click)='changeShipmentVisibility(i);'>
-                                <td id="GLSRef">{{item.idShipment}}</td>
+                                <td id="GLSRef">{{item.partNo}}</td>
                                 <td id="GLSArticle">{{item.note}}</td>
                                 <td id="weight">{{item.weight}}</td>
                             </tr>
