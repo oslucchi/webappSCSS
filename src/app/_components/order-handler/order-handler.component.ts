@@ -172,6 +172,7 @@ export class OrderHandlerComponent implements OnInit {
     this.service
       .post("orders/fetchShipments", {
         forwarder: "CES",
+        includePickRequested: false
       })
       .subscribe((res: HttpResponse<any>) => {
         console.log(res);
