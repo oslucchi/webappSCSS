@@ -11,4 +11,5 @@ export class ShipmentRow {
   ddt: string = "";
   note: string = "";
   barCode: string = "";
+  shipmentNo: string = "";
 }

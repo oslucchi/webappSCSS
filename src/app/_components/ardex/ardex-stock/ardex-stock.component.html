@@ -1,0 +1,75 @@
+<div style="width: 770px">
+    <mat-table [dataSource]="stockDS" id="stocksDS" matSort>
+        <!--
+        <ng-container matColumnDef="idStock">
+            <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+            <mat-cell *matCellDef="let stock">
+                {{stock.idStock}}
+            </mat-cell>
+        </ng-container>
+        -->
+        <ng-container matColumnDef="location">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Locazione</mat-header-cell>
+            <mat-cell *matCellDef="let stock">
+                {{stock.location}}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="articleCode">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Articolo</mat-header-cell>
+            <mat-cell *matCellDef="let stock">
+                {{stock.articleCode}}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="articleDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Descrizione</mat-header-cell>
+            <mat-cell *matCellDef="let stock; let i = index">
+                <div contenteditable="true"
+                     (keydown)="onKeydown($event, i, 'articleDescription')"
+                     (keypress)="isCharAllowed($event, ALLOW_ALL)" 
+                     (input)="handleInput($event)"
+                >
+                     {{stock.articleDescription}}
+                </div>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="eanCode">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Codice EAN</mat-header-cell>
+            <mat-cell *matCellDef="let stock; let i = index">
+                <div contenteditable="true"
+                     (keydown)="onKeydown($event, i, 'eancode')"
+                     (keypress)="isCharAllowed($event, ALLOW_ALL)" 
+                     (input)="handleInput($event)"
+                >
+                     {{stock.eancode}}
+                </div>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="batch">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Lotto</mat-header-cell>
+            <mat-cell *matCellDef="let stock">
+                {{stock.batch}}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="expiryDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Scadenza</mat-header-cell>
+            <mat-cell *matCellDef="let stock">
+                {{stock.expiryDate|date:'dd/MM/yy'}}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="quantity">
+            <mat-header-cell *matHeaderCellDef>Qta</mat-header-cell>
+            <mat-cell *matCellDef="let stock; let i = index">
+                <div contenteditable="true"
+                     (keydown)="onKeydown($event, i, 'quantity')"
+                     (keypress)="isCharAllowed($event, combineFlags(ALLOW_NUMBERS, ALLOW_DECIMALS))" 
+                     (input)="handleInput($event)"
+                >
+                     {{stock.quantity}}
+                </div>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="getStockDisplayedColumns()"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: getStockDisplayedColumns()">
+        </mat-row>
+    </mat-table>
+</div>

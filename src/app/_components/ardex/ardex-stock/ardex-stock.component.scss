@@ -1,0 +1,164 @@
+table {
+    font-family: Sans-Serif;
+    font-size: 11px;
+    border-spacing: 0 1px; 
+}
+
+::ng-deep mat-table {
+    border: 1px solid #000;
+    border-collapse: collapse;
+    width: 100%;
+
+    mat-header-row, mat-row {
+        border-bottom: 1px solid black;
+    }
+
+    mat-header-cell, mat-cell {
+        border-right: 1px solid black;
+        padding: 8px;
+    }
+
+    mat-header-cell:last-child, mat-cell:last-child {
+        border-right: none;
+    }
+}
+
+.mat-table {
+    max-height: 700px;
+    width: 100%;
+    border: solid 1px;
+}
+
+.mat-header-cell {
+    color: rgb(6, 62, 247);
+}
+
+.mat-row {
+    cursor: pointer;
+}
+
+.mat-cell {
+    font-family: Sans-Serif;
+    font-size: 11px;
+}
+
+.mat-row:nth-child(even){
+  background-color:rgba(126, 123, 123, 0.062);
+}
+
+.mat-row:nth-child(odd){
+  background-color:#FDFDFB;
+}
+
+
+.mat-column-location {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 100px !important;
+    width: 100px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    text-align: right;
+    justify-content: flex-end;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.mat-column-articleCode {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 90px !important;
+    width: 90px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto; 
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.mat-column-articleDescription {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 280px !important;
+    width: 280px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto; 
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.mat-column-batch {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 200px !important;
+    width: 200px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    text-align: right;
+    justify-content: flex-end;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.mat-column-quantity {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 80px !important;
+    width: 80x !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    text-align: right;
+    justify-content: flex-end;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.mat-column-expiryDate {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 100px !important;
+    width: 100px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    text-align: right;
+    justify-content: flex-end;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.mat-column-eanCode {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 150px !important;
+    width: 150px !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    text-align: right;
+    justify-content: flex-end;
+    padding-left: 8px;
+    padding-right: 8px;
+}
