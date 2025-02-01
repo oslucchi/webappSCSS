@@ -1,0 +1,43 @@
+<div class="caption">{{ title }}</div>
+<br>
+
+<span *ngIf="forwarders.length > 1">
+    <table style='width: 100%;'>
+        <tbody >
+            <tr>
+                <td style='width: 20% !important'>
+                    <mat-form-field>
+                        <mat-label>Vettore</mat-label>
+                        <mat-select id="forwarder"
+                                    [(ngModel)]="forwarderVar"
+                                    (selectionChange)="onForwarderChange($event)">
+                            <div *ngFor="let item of forwarders;">
+                                <mat-option [value]="item.id" >{{ item.des }}</mat-option>
+                            </div>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</span>
+
+<table class="shipments" style='width: 100%;'>
+    <tr>
+        <th id="selected"><mat-checkbox [(ngModel)]='shipmentSelection' [checked]='false' (click)='toggleAllShipmentsSelection();'></mat-checkbox></th>
+        <th id="customer">Cliente</th>
+        <th id="shipmentNo">N° Spedizione</th>
+    </tr>
+    <tr *ngFor="let shipment of shipments; index as i">
+        <td id="selected">
+            <mat-checkbox [(ngModel)]='shipment.selected' [checked]='false' (click)='toggleShipmentSelection(i);'></mat-checkbox>
+        </td>
+        <td id="customer">{{shipment.customerDescription}}</td>
+        <td id="shipmentNo">{{shipment.forwarderShipmentRef}}</td>
+    </tr>
+</table>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button"(click)="closeParcels()">Chiudi Sped</button>
+    <button class="mat-raised-button mat-primary"(click)="closeDialog()">Esci</button>
+</mat-dialog-actions>

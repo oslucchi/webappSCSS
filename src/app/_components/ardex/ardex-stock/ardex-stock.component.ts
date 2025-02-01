@@ -1,15 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ApiService } from '../../../_services/api.service';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatMenuTrigger } from '@angular/material/menu';
-import { MatSort }  from '@angular/material/sort';
-import { MatTableDataSource }  from '@angular/material/table';
-import { HttpResponse } from '@angular/common/http';
 import { UserProfile } from '../../../_models/user-profile';
 import { CookieService } from 'ngx-cookie-service';
-import { Articles } from '../../../_models/articles';
-
+import { ApiService } from '../../../_services/api.service';
+import { Stock } from '../../../_models/stock';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatMenuTrigger } from '@angular/material/menu';
+import { MatDialog } from '@angular/material/dialog';
+import { HttpResponse } from '@angular/common/http';
 
 export const MY_FORMATS = {
   parse: {
@@ -23,10 +22,11 @@ export const MY_FORMATS = {
   },
 };
 
+
 @Component({
-  selector: 'app-ardex-articles',
-  templateUrl: './ardex-articles.component.html',
-  styleUrls: ['./ardex-articles.component.scss'],
+  selector: 'app-ardex-stock',
+  templateUrl: './ardex-stock.component.html',
+  styleUrl: './ardex-stock.component.scss',
   providers: [
     {
       provide: MAT_DATE_LOCALE,
@@ -40,50 +40,52 @@ export const MY_FORMATS = {
 })
 
 
-export class ArdexArticleComponent implements OnInit {  
+export class ArdexStockComponent implements OnInit {  
   private tempInputValue: string = ''; // To hold temporary edited value
 
   public profile: UserProfile = new UserProfile(new CookieService(new Document(), "")) ;
 
   private service: ApiService;
   private cookieService: CookieService;
+  private cdr: ChangeDetectorRef;
 
-  public articleList: Articles[] = [];
-  public articleDS: MatTableDataSource<Articles> = new MatTableDataSource<Articles>(this.articleList);;
+  public stockList: Stock[] = [];
+  public stockDS: MatTableDataSource<Stock> = new MatTableDataSource<Stock>(this.stockList);;
   public ALLOW_LETTERS = 1;
   public ALLOW_NUMBERS = 2;
   public ALLOW_NUMBER_SIGN = 4;
   public ALLOW_DECIMALS = 8;
   public ALLOW_ALL = 255
 
-  private articlesDisplayedColumns: any[] = [
-    { def: "idArticle", hide: false },
-    { def: "refERP", hide: false },
-    { def: "description", hide: false },
-    { def: "GTIN", hide : false},
-    { def: "length", hide: false },
-    { def: "width", hide : false},
-    { def: "height", hide: false },
-    { def: "weight", hide: false },
+  private stockDisplayedColumns: any[] = [
+    { def: "idStock", hide: true },
+    { def: "location", hide: false },
+    { def: "articleCode", hide: false },
+    { def: "articleDescription", hide: false },
+    { def: "eanCode", hide: false },
+    { def: "batch", hide: false },
+    { def: "expiryDate", hide: false },
+    { def: "quantity", hide: false }
   ];
-
   @ViewChild(MatSort, { static: true }) sort: MatSort = new MatSort();
   @ViewChild(MatMenuTrigger, { static: true }) contextMenu: MatMenuTrigger | undefined;
 
   constructor(private apiService: ApiService,
               private cookieServ: CookieService,
-              private dialog: MatDialog) 
+              private dialog: MatDialog,
+              private cdrHook: ChangeDetectorRef) 
   {
     this.service = apiService;
     this.cookieService = cookieServ;
     this.profile = new UserProfile(this.cookieService);
-    this.articleDS = new MatTableDataSource<Articles>(this.articleList);
+    this.stockDS = new MatTableDataSource<Stock>(this.stockList);
+    this.cdr = cdrHook;
   }
 
   ngOnInit(): void {
     this.profile = new UserProfile(this.cookieService);
     this.profile.getProfile();
-    this.getArticles();
+    this.getStock();
   }
 
   // Handles input events to temporarily store text
@@ -142,44 +144,45 @@ export class ArdexArticleComponent implements OnInit {
   }
 
   // Handles Enter/Tab keys to save edits and ignore other non-printable keys
-  onKeydown(event: KeyboardEvent, index: number, attribute: keyof Articles): void {
+  onKeydown(event: KeyboardEvent, index: number, attribute: keyof Stock): void {
     if (event.key === 'Enter' || event.key === 'Tab') {
       event.preventDefault(); // Prevent default for Enter/Tab
-      this.updateArticle(index, attribute); // Commit change
+      // this.updateArticle(index, attribute); // Commit change
     } else if (event.key.length > 1 && event.key !== 'Backspace' && event.key !== 'Delete') {
       event.preventDefault(); // Ignore non-printable keys except Backspace and Delete
     }
   }
 
   // Commits changes to the article list based on the edited attribute
-  updateArticle(index: number, attribute: keyof Articles): void {
+  updateStock(index: number, attribute: keyof Stock): void {
     if (attribute && this.tempInputValue) {
-      (this.articleList[index][attribute] as Articles[keyof Articles]) = this.tempInputValue;
-      this.articleDS.data = [...this.articleList]; // Update table data source
-      console.log(`Updated article[${index}].${attribute} to: ${this.tempInputValue}`);
+      (this.stockList[index][attribute] as Stock[keyof Stock]) = this.tempInputValue;
+      this.stockDS.data = [...this.stockList]; // Update table data source
+      console.log(`Updated stock[${index}].${attribute} to: ${this.tempInputValue}`);
     }
   }
 
 
-  getArticlesDisplayedColumns(): string[] {
-    return this.articlesDisplayedColumns
+  getStockDisplayedColumns(): string[] {
+    return this.stockDisplayedColumns
       .filter((cd) => !cd.hide)
       .map((cd) => cd.def);
   }
 
-  getArticles() {
-    this.articleList = new Array<Articles>();
-    this.articleDS = new MatTableDataSource<Articles>(this.articleList);
+  getStock() {
+    this.stockList = new Array<Stock>();
+    this.stockDS = new MatTableDataSource<Stock>(this.stockList);
     this.service
-      .get("ardex/allArticles") 
+      .get("locations/getStocklist") 
       .subscribe((res: HttpResponse<any>) => {
-          if (!(res.body.articles?.length < 1 || res.body.articles == undefined))
+          if (!(res.body.stockList?.length < 1 || res.body.stockList == undefined))
           {
-            this.articleList = res.body.articles;
+            this.stockList = res.body.stockList;
           }
-          this.articleDS = new MatTableDataSource<Articles>(this.articleList);
-          this.articleDS.sort = this.sort;
-          console.log(this.articleDS);
+          this.stockDS = new MatTableDataSource<Stock>(this.stockList);
+          this.stockDS.sort = this.sort;
+          console.log(this.stockDS);
+          this.cdr.detectChanges();
       });
   }
 }
