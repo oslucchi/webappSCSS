@@ -49,6 +49,7 @@ import { ArdexArticleComponent } from "./_components/ardex/ardex-articles/ardex-
 import { NgIncludeDirective } from "./_directives/ngInclude";
 import { ShipmentCloseComponent } from "./_components/shipment-pickup-dialog/shipment-close.component";
 import { ShipmentPickupComponent } from "./_components/shipment-pickup-dialog/shipment-pickup.component";
+import { ArdexStockComponent } from "./_components/ardex/ardex-stock/ardex-stock.component";
 
 @NgModule({ 
     imports: [
@@ -98,6 +99,7 @@ import { ShipmentPickupComponent } from "./_components/shipment-pickup-dialog/sh
         ShipmentDetailsViewerComponent,
         ArdexMainComponent,
         ArdexReceivingComponent,
+        ArdexStockComponent,
         ArdexArticleComponent,
         SpacedCurrencyPipe,
         NgIncludeDirective
