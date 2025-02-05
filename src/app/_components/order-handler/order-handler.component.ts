@@ -825,6 +825,23 @@ export class OrderHandlerComponent implements OnInit {
       });
   }
 
+  filterSelected(optionToCheck: string)
+  {
+    switch(optionToCheck)
+    {
+      case "RDY":
+        if (this.profile.filters.filterWarehouse[UserProfileConstants.FILTER_WHAREHOUSE_READY])
+          return true;
+        break;
+
+      case "SHI":
+        if (this.profile.filters.filterShipment[UserProfileConstants.FILTER_SHIPMENT_COMPLETED])
+          return true;
+        break;
+    }
+    return false;
+  }
+
   attributeInSet(stringArray: string[], value: string) {
     var isIn: boolean;
     isIn = false;
