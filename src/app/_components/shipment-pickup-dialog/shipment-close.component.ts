@@ -56,7 +56,8 @@ export class ShipmentCloseComponent implements OnInit {
   ];
 
   public forwarders: any[] = [
-    { id: "GLS", des: "GLS - Collettame", selected: false }
+    { id: "GLS", des: "GLS - Collettame", selected: false },
+    { id: "CES", des: "Rhenus, pallettizzato", selected: false }
   ];
 
   public forwarderVar: string;
@@ -88,6 +89,7 @@ export class ShipmentCloseComponent implements OnInit {
 
   ngOnInit() 
   {
+    this.onForwarderChange("GLS");
   }
 
   getShipmentsDisplayedColumns():string[]
@@ -136,7 +138,7 @@ export class ShipmentCloseComponent implements OnInit {
     console.log("get shipments for forwarder: '" + event + "'");
     this.service
     .post(
-      'orders/createShipments',
+      'orders/fetchParcelsToClose',
       {
         'forwarder' : this.forwarderVar
       }
