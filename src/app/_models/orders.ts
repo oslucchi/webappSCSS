@@ -33,6 +33,7 @@ export class Orders {
   customerRefERP: string = "";
   customerDescription: string = "";
   customerDeliveryProvince: string = "";
+  customerDeliveryZipCode: string = "";
   pickupReuqestNo: string = "";
   selected: boolean = false;
 

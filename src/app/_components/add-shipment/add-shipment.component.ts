@@ -144,6 +144,7 @@ export class AddShipmentComponent implements OnInit {
       {
         "forwarder" : this.order.forwarder, 
         "province" : this.order.customerDeliveryProvince,
+        "zipCode": this.order.customerDeliveryZipCode,
         "length" : this.shipment.length,
         "width" : this.shipment.width,
         "height" : this.shipment.height,
