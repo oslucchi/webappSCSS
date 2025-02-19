@@ -574,6 +574,7 @@ export class OrderHandlerComponent implements OnInit {
     var sourceId: string = "";
     var province: string = "";
     var zipCode: string = this.orderHandler.details.customerDeliveryZipCode;
+    var city: string = this.orderHandler.details.customerDeliveryCity;
     zipCode = (!zipCode ? "00000" : zipCode);
     
     console.log(event);
@@ -592,6 +593,7 @@ export class OrderHandlerComponent implements OnInit {
         .post("orders/shipmentCost", {
           forwarder: this.orderHandler.details.forwarder,
           province: province,
+          city : city,
           zipCode: zipCode,
           length: this.orderHandler.shipments[0].length,
           width: this.orderHandler.shipments[0].width,
@@ -783,6 +785,7 @@ export class OrderHandlerComponent implements OnInit {
             forwarder: this.orderHandler.details.forwarder,
             province: this.orderHandler.details.customerDeliveryProvince,
             zipCode: this.orderHandler.details.customerDeliveryZipCode,
+            city: this.orderHandler.details.customerDeliveryCity,
             length: this.orderHandler.shipments[0].length,
             width: this.orderHandler.shipments[0].width,
             height: this.orderHandler.shipments[0].height,
