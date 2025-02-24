@@ -155,7 +155,7 @@ export class AddShipmentComponent implements OnInit {
     .subscribe(
       (res: HttpResponse<any>)=>{  
         console.log(res);
-        this.shipment.forwarderCost = res.body.shipmentCost;
+        this.shipment.forwarderCost = res.body.shipmentCostDetails.cost;
       }
     );
   }

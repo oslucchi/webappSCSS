@@ -602,8 +602,8 @@ export class OrderHandlerComponent implements OnInit {
         })
         .subscribe((res: HttpResponse<any>) => {
           console.log(res);
-          this.orderHandler.details.forwarderCost = res.body.shipmentCost;
-          this.orderHandler.shipments[0].forwarderCost = res.body.shipmentCost;
+          this.orderHandler.details.forwarderCost = res.body.shipmentCostDetails.cost;
+          this.orderHandler.shipments[0].forwarderCost = res.body.shipmentCostDetails.cost;
         });
     }
 
