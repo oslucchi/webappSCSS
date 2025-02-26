@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
                 articlePackageWidth: 0,
                 articlePackageHeight: 0,
                 articlePackageWeight: 0,
+                adr: "",
                 selected: false
             },
             {   
@@ -79,6 +80,7 @@ export class LoginComponent implements OnInit {
                 articlePackageWidth: 0,
                 articlePackageHeight: 0,
                 articlePackageWeight: 0,
+                adr: "",
                 selected: false
             }
         ];       

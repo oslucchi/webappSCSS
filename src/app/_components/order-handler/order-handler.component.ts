@@ -599,6 +599,7 @@ export class OrderHandlerComponent implements OnInit {
           width: this.orderHandler.shipments[0].width,
           height: this.orderHandler.shipments[0].height,
           weight: this.orderHandler.shipments[0].weight,
+          adr: this.orderHandler.shipments[0].adr,
         })
         .subscribe((res: HttpResponse<any>) => {
           console.log(res);
@@ -790,6 +791,7 @@ export class OrderHandlerComponent implements OnInit {
             width: this.orderHandler.shipments[0].width,
             height: this.orderHandler.shipments[0].height,
             weight: this.orderHandler.shipments[0].weight,
+            adr: this.orderHandler.shipments[0].adr
           })
           .subscribe((res: HttpResponse<any>) => {
             console.log(res);

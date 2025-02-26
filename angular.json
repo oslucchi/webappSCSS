@@ -37,7 +37,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "baseHref": "/orderMngrAX/",
+            "deployUrl": "/orderMngrAX/"
           },
           "configurations": {
             "production": {
@@ -73,7 +75,10 @@
               "buildTarget": "webappSCSS:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "watch": true
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

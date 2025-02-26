@@ -212,7 +212,12 @@
 
                         <ng-container matColumnDef="sourceIssue">
                             <mat-header-cell *matHeaderCellDef>E</mat-header-cell>
-                            <mat-cell *matCellDef="let order">{{order.sourceIssue}}</mat-cell>
+                            <mat-cell *matCellDef="let order">
+                                    {{order.sourceIssue}}
+                                    <div *ngIf="order.hasAdr">
+                                       <img src="assets/img/attention.png" alt="ADR Icon" width="35" height="35" /> 
+                                    </div>
+                            </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="empty">
                             <mat-header-cell *matHeaderCellDef>{{ empty }}</mat-header-cell>
@@ -269,7 +274,12 @@
                         </ng-container>
                         <ng-container matColumnDef="articleSourceIssue">
                             <mat-header-cell *matHeaderCellDef>E</mat-header-cell>
-                            <mat-cell *matCellDef="let detail">{{(detail.sourceIssue ? "X" : "")}}</mat-cell>
+                            <mat-cell *matCellDef="let detail">
+                                {{(detail.sourceIssue ? "X" : "")}}
+                                <div *ngIf="detail.adr === 'ADR'">
+                                    <img src="assets/img/attention.png" alt="ADR Icon" width="35" height="35" /> 
+                                </div>
+                            </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="piecesFromSqm">
                             <mat-header-cell *matHeaderCellDef>Pezzi</mat-header-cell>

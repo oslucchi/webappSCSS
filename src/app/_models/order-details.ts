@@ -15,5 +15,6 @@ export class OrderDetails {
 	articlePackageWidth: number = 0;
 	articlePackageHeight: number = 0;
 	articlePackageWeight: number = 0;
+    adr: string = "";
     selected: boolean = false;
 }

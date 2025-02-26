@@ -14,5 +14,6 @@ export class OrderShipments {
 	forwarderCost: number = 0;
 	clientCost: number = 0;
 	articleDescription: string = "";
+	adr: string = "";
 	selected: boolean = false;
 }
