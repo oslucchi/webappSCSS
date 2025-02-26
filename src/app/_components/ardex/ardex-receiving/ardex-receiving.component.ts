@@ -106,7 +106,7 @@ export class ArdexReceivingComponent implements OnInit {
     this.cookieService = cookieServ;
     this.shipmentDS = new MatTableDataSource<ArdexRefillShipment>();
     this.profile = new UserProfile(this.cookieService);
-    this.checkmarkPath = "../../../assets/img/checkmark.png";
+    this.checkmarkPath = "assets/img/checkmark.png";
   }
 
   ngOnInit(): void {
