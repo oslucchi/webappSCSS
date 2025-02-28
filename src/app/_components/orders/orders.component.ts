@@ -185,7 +185,9 @@ export class OrdersComponent implements OnInit {
               this.orderHandler = new OrderHandler();
               this.orderHandler.details = item;
               this.orderHandler.note = res.body.orderNotes;
-              this.orderHandler.shipments = res.body.orderShipments;
+              console.log("----> Shipments:");
+              console.log(res.body.orderShipments);
+              this.orderHandler.shipments = (res.body.orderShipments.length == 0 ? [] : res.body.orderShipments);
               this.orderHandler.customerDelivery = res.body.customerDelivery;
               this.orderHandler.statusPre = this.orderHandler.details.status;
               this.orderHandler.customer = res.body.customer;
@@ -282,6 +284,7 @@ export class OrdersComponent implements OnInit {
       new Array<OrderDetails>()
     );
     this.orderHandler = new OrderHandler();
+    this.orderHandler.shipments = [];
     this.orderValue = 0;
 
     this.setFilters();
@@ -295,6 +298,8 @@ export class OrdersComponent implements OnInit {
         statusSet: this.profile.getStatusWhereString(),
       })
       .subscribe((res: HttpResponse<any>) => {
+        console.log(`Fetched orders in status (${this.profile.getStatusWhereString()})`);
+        console.log(`returned a list of ${res.body.orderList.length} items`);
         if (fromRefresh) {
           var removeFromList = this.orderList.filter(
             this.orderListComparer(res.body.orderList)
@@ -490,11 +495,12 @@ export class OrdersComponent implements OnInit {
     this.service
       .get("orders/allDetails/" + order.idOrder)
       .subscribe((res: HttpResponse<any>) => {
+        console.log(`Fetched details for order ${order.idOrder} - ${order.orderRef}`);
+        console.log(`retrieved an array of ${res.body.orderDetails.length}`);
         if (this.orderHandler == null) {
           this.orderHandler = new OrderHandler();
         }
-
-        if (this.orderHandler.details.idOrder != order.idOrder) {
+        if (!this.orderHandler || this.orderHandler.details.idOrder != order.idOrder) {
           this.orderHandler.details = order;
           this.orderHandler.details.shipmentDate = new Date(order.shipmentDate!);
           this.orderHandler.details.requestedAssemblyDate = new Date(
@@ -527,7 +533,8 @@ export class OrdersComponent implements OnInit {
         } else {
           this.orderValue = Math.floor(this.orderHandler.details.orderValue);
         }
-
+        console.log("OrderHandler is:")
+        console.log(this.orderHandler);
         return;
       });
     // this.dataSourceDetails = null;

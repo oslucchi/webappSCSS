@@ -42,48 +42,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.orderDetails = [
-            {   
-                idOrderDetails: 0,
-                idOrder: 1,
-                idArticle: 2,
-                quantity: 3,
-                piecesFromSqm: 1,
-                cost: 4,
-                sourceIssue: 0,
-                articleRefERP: "", 
-                articleCategory: "",
-                articleDescription: "", 
-                articleUnityOfMeasure: "",
-                articleRateOfConversion: 1.0,
-                articlePackageLength: 0,
-                articlePackageWidth: 0,
-                articlePackageHeight: 0,
-                articlePackageWeight: 0,
-                adr: "",
-                selected: false
-            },
-            {   
-                idOrderDetails: 0,
-                idOrder: 1,
-                idArticle: 12,
-                quantity: 13,
-                piecesFromSqm: 1,
-                cost: 14,
-                sourceIssue: 0,
-                articleRefERP: "", 
-                articleCategory: "",
-                articleDescription: "", 
-                articleUnityOfMeasure: "",
-                articleRateOfConversion: 1.0,
-                articlePackageLength: 0,
-                articlePackageWidth: 0,
-                articlePackageHeight: 0,
-                articlePackageWeight: 0,
-                adr: "",
-                selected: false
-            }
-        ];       
+        this.orderDetails = [];       
         
         this.loginForm = this.formBuilder.group({
             username: ['', Validators.required],

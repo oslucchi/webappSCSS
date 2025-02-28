@@ -16,5 +16,11 @@ export class OrderDetails {
 	articlePackageHeight: number = 0;
 	articlePackageWeight: number = 0;
     adr: string = "";
+    atGroundFloor: boolean = true;
+	idLocation: number = 0;
+	quantityInStock: number = 0;
+	rack: string = "";
+	expiryDate: Date = new Date();
+	batch: string = "";
     selected: boolean = false;
 }
