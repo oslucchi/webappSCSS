@@ -263,9 +263,13 @@ export class OrderHandlerComponent implements OnInit {
       this.service
         .get("orders/allDetails/" + this.orderHandler.details.idOrder)
         .subscribe((res: HttpResponse<any>) => {
+          console.log(`changePackaging shipments ${JSON.stringify(res.body.orderShipments)}`);
           this.orderHandler.shipments = res.body.orderShipments;
-          this.orderHandler.details.numberOfItems =
-            this.orderHandler.shipments.length;
+          this.orderHandler.details.numberOfItems = this.orderHandler.shipments.length;
+          if (!this.orderHandler.shipments)
+          {
+            this.orderHandler.shipments = [];
+          }
         });
     });
   }

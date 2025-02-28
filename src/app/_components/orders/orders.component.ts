@@ -326,6 +326,7 @@ export class OrdersComponent implements OnInit {
           this.setFilters();
           // if (!this.profile.filters.filterInvoice[0])
           //  this.getOrderDetails();
+          console.log(`getOrdersBasedOnFilters for order ${JSON.stringify(this.orderList[0])}`);
           this.listOrderDetails(this.orderList[0]);
           this.applyFilters();
         }
@@ -495,11 +496,14 @@ export class OrdersComponent implements OnInit {
     this.service
       .get("orders/allDetails/" + order.idOrder)
       .subscribe((res: HttpResponse<any>) => {
-        console.log(`Fetched details for order ${order.idOrder} - ${order.orderRef}`);
-        console.log(`retrieved an array of ${res.body.orderDetails.length}`);
         if (this.orderHandler == null) {
           this.orderHandler = new OrderHandler();
         }
+        console.log(`Fetched all details`);
+        console.log(`details  ${JSON.stringify(res.body.orderDetails)}`);
+        console.log(`shipments  ${JSON.stringify(res.body.orderShipments)}`);
+        console.log(`notes  ${JSON.stringify(res.body.orderNotes)}`);
+
         if (!this.orderHandler || this.orderHandler.details.idOrder != order.idOrder) {
           this.orderHandler.details = order;
           this.orderHandler.details.shipmentDate = new Date(order.shipmentDate!);
