@@ -150,7 +150,7 @@ export class AddShipmentComponent implements OnInit {
         "width" : this.shipment.width,
         "height" : this.shipment.height,
         "weight" : this.shipment.weight,
-        "adr" : this.shipment.adr
+        "adr" : ((!this.shipment.adr || this.shipment.adr == null) ? false : this.shipment.adr) 
       }
     )
     .subscribe(
