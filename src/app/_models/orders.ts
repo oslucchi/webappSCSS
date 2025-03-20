@@ -17,7 +17,6 @@ export class Orders {
   assemblyTime: number = 0;
   packageCost: number = 0;
   insuranceCost: number = 0;
-  trackingRefrence: string = "";
   compositionBoards: number = 0;
   compositionTrays: number = 0;
   compositionDesign: number = 0;
@@ -29,13 +28,22 @@ export class Orders {
   DTVDate: Date  = new Date();
   numberOfItems: number = 0;
   shipmentNo: number = 0;
-  sourceIssue: string = "";
+  pickupReuqestNo: string = "";
+  isPIcked: number = 0;
+  consigned: boolean = false;
+  parcelClosed: boolean = false;
+
   customerRefERP: string = "";
   customerDescription: string = "";
   customerDeliveryProvince: string = "";
   customerDeliveryCity: string = "";
   customerDeliveryZipCode: string = "";
-  pickupReuqestNo: string = "";
+
+  trackingRefrence: string = "";
+  requiresForklift:boolean = false;
+  hasAdr:boolean = false;
+
+  sourceIssue: string = "";
   selected: boolean = false;
 
   static updateOrderField<T, K extends keyof T>(obj: T, key: K, value: T[K]): void {

@@ -603,8 +603,8 @@ export class OrderHandlerComponent implements OnInit {
           width: this.orderHandler.shipments[0].width,
           height: this.orderHandler.shipments[0].height,
           weight: this.orderHandler.shipments[0].weight,
-          adr: ((!this.orderHandler.shipments[0].adr || this.orderHandler.shipments[0].adr == null) ?
-                        false : this.orderHandler.shipments[0].adr)
+          adr: ((!this.orderHandler.details.hasAdr || this.orderHandler.details.hasAdr == null) ?
+                        false : this.orderHandler.details.hasAdr)
         })
         .subscribe((res: HttpResponse<any>) => {
           console.log(res);
@@ -796,8 +796,9 @@ export class OrderHandlerComponent implements OnInit {
             width: this.orderHandler.shipments[0].width,
             height: this.orderHandler.shipments[0].height,
             weight: this.orderHandler.shipments[0].weight,
-            adr: ((!this.orderHandler.shipments[0].adr || this.orderHandler.shipments[0].adr == null) ?
-                      false : this.orderHandler.shipments[0].adr)
+            adr: ((!this.orderHandler.details.hasAdr || this.orderHandler.details.hasAdr == null) ?
+                    false : this.orderHandler.details.hasAdr)
+
           })
           .subscribe((res: HttpResponse<any>) => {
             console.log(res);
