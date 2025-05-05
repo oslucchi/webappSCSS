@@ -174,7 +174,7 @@
         <tr>
             <td width='59%' valign='top'>
                 <div style='overflow-y:auto; height: 480px;'>
-                    <mat-table [dataSource]="dataSource" id="orders" matSort>
+                    <mat-table [dataSource]="dataSource" id="orders" matSort class="details-table">
                         <ng-container matColumnDef="status">
                             <mat-header-cell *matHeaderCellDef mat-sort-header>St</mat-header-cell>
                             <mat-cell *matCellDef="let order">{{order.status}}</mat-cell>
@@ -208,6 +208,19 @@
                         <ng-container matColumnDef="requestedAssemblyDate">
                             <mat-header-cell *matHeaderCellDef mat-sort-header>Data</mat-header-cell>
                             <mat-cell *matCellDef="let order">{{order.requestedAssemblyDate|date:'dd/MM/yy'}}</mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="forwarderCost">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>Forwarder</mat-header-cell>
+                            <mat-cell *matCellDef="let order">
+                                {{ order?.forwarderCost != null ? (order.forwarderCost | number:'1.2-2':'it') : '0.00' }}                            </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="clientCost">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>Addebito</mat-header-cell>
+                            <mat-cell *matCellDef="let order">
+                                {{order?.clientCost != null ? (order.clientCost | number:'1.2-2':'it') : '0.00' }}
+                            </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="sourceIssue">
@@ -255,6 +268,7 @@
                                 {{ empty }}
                             </mat-cell>
                         </ng-container>
+
                         <mat-header-row *matHeaderRowDef="getOrdersDisplayedColumns()"></mat-header-row>
                         <mat-row *matRowDef="let row; columns: getOrdersDisplayedColumns()" (click)="listOrderDetails(row)"></mat-row>
                     </mat-table>

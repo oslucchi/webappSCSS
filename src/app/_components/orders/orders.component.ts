@@ -87,6 +87,8 @@ export class OrdersComponent implements OnInit {
     { def: "customerDeliveryProvince", hide: true },
     { def: "requestedAssemblyDate", hide: false },
     { def: "shipmentDate", hide: false },
+    { def: "forwarderCost", hide: false },
+    { def: "clientCost", hide: false },
     { def: "sourceIssue", hide: false },
     { def: "empty", hide: true },
     { def: "compositionBoards", hide: false },
@@ -119,6 +121,59 @@ export class OrdersComponent implements OnInit {
     this.bogusDataSource = new MatTableDataSource<Orders>();
   }
 
+  updateOrdersDisplayedColumns(): void {
+    let defsToHide: string[] = [];
+    let defsToShow: string[] = [];
+
+    if (this.profile.filters.filterInvoice[0]) 
+    {
+      defsToHide.push(
+        "sourceIssue",
+        "compositionBoards",
+        "compositionTrays",
+        "compositionDesign",
+        "compositionAccessories"
+      );
+      defsToShow.push(
+        "shipmentDate",
+        "forwarderCost",
+        "clientCost"
+      );
+    } 
+    else if (this.profile.filters.filterShipment[0]) 
+    {
+      defsToShow.push(
+        "shipmentDate",
+        "forwarderCost",
+        "clientCost"
+      );
+      defsToHide.push(
+        "sourceIssue",
+        "requestedAssemblyDate"
+      );
+    } 
+    else 
+    {
+      defsToHide.push(
+        "shipmentDate",
+      );
+      defsToShow.push(
+        "sourceIssue",
+        "requestedAssemblyDate"
+      );
+    }
+    console.log("Will show ", defsToShow);
+    console.log("Will hide ", defsToHide);
+    this.ordersDisplayedColumns.forEach((x) => {
+      if (defsToShow.includes(x.def)) {
+        x.hide = false;
+      }
+      if (defsToHide.includes(x.def)) {
+        x.hide = true;
+      }
+    });
+  }
+
   getDetailsDisplayedColumns(): string[] {
     return this.detailsDisplayedColumns
       .filter((cd) => !cd.hide)
@@ -126,22 +181,6 @@ export class OrdersComponent implements OnInit {
   }
 
   getOrdersDisplayedColumns(): string[] {
-    if (
-      this.profile.filters.filterInvoice[0] ||
-      this.profile.filters.filterShipment[0]
-    ) {
-      this.ordersDisplayedColumns.find((x) => x.def == "shipmentDate").hide =
-        false;
-      this.ordersDisplayedColumns.find(
-        (x) => x.def == "requestedAssemblyDate"
-      ).hide = true;
-    } else {
-      this.ordersDisplayedColumns.find((x) => x.def == "shipmentDate").hide =
-        true;
-      this.ordersDisplayedColumns.find(
-        (x) => x.def == "requestedAssemblyDate"
-      ).hide = false;
-    }
     return this.ordersDisplayedColumns
       .filter((cd) => !cd.hide)
       .map((cd) => cd.def);
@@ -163,6 +202,7 @@ export class OrdersComponent implements OnInit {
         this.profile.filters.filterShipment
     );
     this.getOrdersBasedOnFilters(false);
+    this.updateOrdersDisplayedColumns();
   }
 
   getOrderDetails() {
@@ -300,6 +340,7 @@ export class OrdersComponent implements OnInit {
       .subscribe((res: HttpResponse<any>) => {
         console.log(`Fetched orders in status (${this.profile.getStatusWhereString()})`);
         console.log(`returned a list of ${res.body.orderList.length} items`);
+        
         if (fromRefresh) {
           var removeFromList = this.orderList.filter(
             this.orderListComparer(res.body.orderList)
@@ -315,18 +356,32 @@ export class OrdersComponent implements OnInit {
               }
             });
             this.orderList = mergedOrderList.concat(addToList);
+            this.orderList.forEach(order => {
+              order.forwarderCost = order.forwarderCost ?? 0;
+              order.clientCost = order.clientCost ?? 0;
+            });
             this.timerReset = true;
             this.dataSource = new MatTableDataSource<Orders>(this.orderList);
             this.dataSource.sort = this.sort;
           }
-        } else {
-          this.orderList = res.body.orderList;
+        } 
+        else {
+          // this.orderList = res.body.orderList;
+          this.orderList = res.body.orderList.map((o: any) => {
+            const order = new Orders();
+            Object.assign(order, o);
+            // If the server missed the fields completely, still default:
+            order.forwarderCost = order.forwarderCost ?? 0;
+            order.clientCost = order.clientCost ?? 0;
+            return order;
+          });
+          
           this.dataSource = new MatTableDataSource<Orders>(this.orderList);
           this.dataSource.sort = this.sort;
           this.setFilters();
           // if (!this.profile.filters.filterInvoice[0])
           //  this.getOrderDetails();
-          console.log(`getOrdersBasedOnFilters for order ${JSON.stringify(this.orderList[0])}`);
+          console.log(`getOrdersBasedOnFilters for order ${JSON.stringify(this.orderList)}`);
           this.listOrderDetails(this.orderList[0]);
           this.applyFilters();
         }
@@ -429,6 +484,7 @@ export class OrdersComponent implements OnInit {
     }
     this.profile.setProfile();
     this.getOrdersBasedOnFilters(false);
+    this.updateOrdersDisplayedColumns();
   }
 
   statusTransitionEval(status: string) {

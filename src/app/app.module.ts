@@ -30,7 +30,7 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MatInputNumericDirective } from "./_directives/mat-input-numeric.directive";
 import { OrderStatusChangeEmailComponent } from "./_components/order-status-change-email/order-status-change-email.component";
 import { ChatComponent } from "./_components/chat/chat.component";
-import { DatePipe } from "@angular/common";
+import { DatePipe, registerLocaleData } from "@angular/common";
 import { AutoRefreshComponent } from "./_components/auto-refresh/auto-refresh.component";
 import { InventoryComponent } from "./_components/inventory/inventory.component";
 import { PackagingDialogComponent } from "./_components/packaging-dialog/packaging-dialog.component";
@@ -50,6 +50,10 @@ import { NgIncludeDirective } from "./_directives/ngInclude";
 import { ShipmentCloseComponent } from "./_components/shipment-pickup-dialog/shipment-close.component";
 import { ShipmentPickupComponent } from "./_components/shipment-pickup-dialog/shipment-pickup.component";
 import { ArdexStockComponent } from "./_components/ardex/ardex-stock/ardex-stock.component";
+import localeIt from '@angular/common/locales/it';
+import { LOCALE_ID } from '@angular/core';
+
+registerLocaleData(localeIt);
 
 @NgModule({ 
     imports: [
@@ -110,7 +114,8 @@ import { ArdexStockComponent } from "./_components/ardex/ardex-stock/ardex-stock
         CookieService, 
         MatMomentDateModule, 
         DatePipe, 
-        MessageBox, 
+        MessageBox,
+        { provide: LOCALE_ID, useValue: 'it' },
         provideHttpClient(withInterceptorsFromDi())
     ]
  })
