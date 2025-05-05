@@ -129,6 +129,7 @@ export class OrdersComponent implements OnInit {
     {
       defsToHide.push(
         "sourceIssue",
+        "requestedAssemblyDate",
         "compositionBoards",
         "compositionTrays",
         "compositionDesign",
