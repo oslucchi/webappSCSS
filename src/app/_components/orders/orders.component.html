@@ -201,12 +201,12 @@
                         </ng-container>
 
                         <ng-container matColumnDef="shipmentDate">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header>Data</mat-header-cell>
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>Spedito</mat-header-cell>
                             <mat-cell *matCellDef="let order">{{order.shipmentDate|date:'dd/MM/yy'}}</mat-cell>
                         </ng-container>
                         
                         <ng-container matColumnDef="requestedAssemblyDate">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header>Data</mat-header-cell>
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>Evadere</mat-header-cell>
                             <mat-cell *matCellDef="let order">{{order.requestedAssemblyDate|date:'dd/MM/yy'}}</mat-cell>
                         </ng-container>
 
