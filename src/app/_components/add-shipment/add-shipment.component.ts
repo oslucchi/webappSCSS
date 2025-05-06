@@ -103,6 +103,24 @@ export class AddShipmentComponent implements OnInit {
           this.shipment = new OrderShipments();
         });
       }
+      this.order.forwarderCost = 0;
+      this.dataSourceShipments.data.forEach((x) => {
+        this.order.forwarderCost += x.forwarderCost;
+      })
+      console.log("updating forwarderCost to: ", this.order.forwarderCost);
+      this.apiService.update("orders/update/" + this.order.idOrder,
+      {
+        "order" : this.order, 
+        "shipments" : [],
+        "updateWhat" : "forwarderCost"
+      }
+    )
+    .subscribe(
+      (res: HttpResponse<any>)=>{  
+        console.log("Returned order ", res);
+        this.order = res.body.order;
+      }
+    );
   }
 
   editShipment(shipment: OrderShipments)
@@ -150,7 +168,7 @@ export class AddShipmentComponent implements OnInit {
         "width" : this.shipment.width,
         "height" : this.shipment.height,
         "weight" : this.shipment.weight,
-        "adr" : ((!this.shipment.adr || this.shipment.adr == null) ? false : this.shipment.adr) 
+        "adr" : ((!this.shipment.adr || this.shipment.adr == null) ? false : true) 
       }
     )
     .subscribe(

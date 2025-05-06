@@ -21,11 +21,11 @@
     </ng-container>
     <ng-container matColumnDef="forwarderCost">
         <mat-header-cell *matHeaderCellDef>Vet</mat-header-cell>
-        <mat-cell class="mat-body" *matCellDef="let shipment">{{shipment.forwarderCost}}</mat-cell>
+        <mat-cell class="mat-body" *matCellDef="let shipment">{{ (shipment.forwarderCost | number:'1.2-2':'it') }}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="clientCost">
         <mat-header-cell *matHeaderCellDef>Cli</mat-header-cell>
-        <mat-cell class="mat-body" *matCellDef="let shipment">{{shipment.clientCost}}</mat-cell>
+        <mat-cell class="mat-body" *matCellDef="let shipment">{{ (shipment.clientCost | number:'1.2-2':'it') }}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="note">
         <mat-header-cell *matHeaderCellDef>Note</mat-header-cell>
@@ -44,8 +44,8 @@
         <td>
             <mat-form-field appearance="fill" style="width:75px !important; text-align: right;">
                 <mat-label>Lun</mat-label>
-                <input matInput id="length"
-                        matInputNumeric 
+                <input matInput id="length" type="number"
+                        matInputNumeric
                         [decimals]="0"
                         [negative]="0"
                         [(ngModel)]="shipment.length"
