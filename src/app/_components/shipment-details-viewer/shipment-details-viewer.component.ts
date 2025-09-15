@@ -103,12 +103,13 @@ export class ShipmentDetailsViewerComponent implements OnInit {
       trackItem.eventDate = new Date(dateFromXML + ".000Z");
       trackItem.eventDescription =statusNodes[i].textContent;
       trackItem.eventNote = notesNodes[i].textContent;
+      console.log("Adding tracking event:", trackItem);
       this.shipment.trackingEvents.push(trackItem);
     } 
   }
 
   ngOnInit() {
-    if (this.forwarder == 'GLS')
+    if (this.forwarder.startsWith('GLS'))
     {
       this.convertGLSResponse(); 
     }
