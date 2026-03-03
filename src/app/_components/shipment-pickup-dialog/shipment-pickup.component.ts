@@ -87,6 +87,7 @@ export class ShipmentPickupComponent implements OnInit {
   private shipmentRow: ShipmentRow = new ShipmentRow();
   public shipmentSelection:boolean = false;
   public data: any;
+  private insuranceSnapshot: Map<string, number | null> = new Map<string, number | null>();
 
   constructor(private dialogRef: MatDialogRef<ShipmentPickupComponent>,
               private apiService: ApiService,
@@ -121,6 +122,7 @@ export class ShipmentPickupComponent implements OnInit {
     this.forwarderVar = this.forwarder = this.data.forwarder;
     this.service = this.apiService;
     this.shipmentSelection = false;
+    this.syncInsuranceSnapshot();
   }
 
   ngOnInit() 
@@ -149,6 +151,12 @@ export class ShipmentPickupComponent implements OnInit {
       if (element.selected)
         this.shipments[index].selected = true;
     })
+    if (!this.shipments.some(s => s.selected))
+    {
+      window.alert("Nessuna spedizione selezionata");
+      return;
+    }
+
     this.service
       .post(
         'orders/submitShipmentPickupRequest',
@@ -206,9 +214,64 @@ export class ShipmentPickupComponent implements OnInit {
             this.shipmentList.push(this.shipmentRow);
           });
         });
+        this.syncInsuranceSnapshot();
         this.dataSourceRow = new MatTableDataSource<ShipmentRow>(this.shipmentList);
       }
     );
+  }
+
+  private shipmentInsuranceKey(shipment: Shipments): string
+  {
+    return `${shipment.tableName}|${shipment.id}`;
+  }
+
+  private normalizeInsuredValue(value: any): number | null
+  {
+    if (value == null || value === '')
+      return null;
+    const sanitizedValue = String(value).replace(/\D+/g, '');
+    if (sanitizedValue === '')
+      return null;
+    return Number(sanitizedValue);
+  }
+
+  private syncInsuranceSnapshot()
+  {
+    this.insuranceSnapshot.clear();
+    this.shipments.forEach((shipment) => {
+      shipment.insuredValue = this.normalizeInsuredValue(shipment.insuredValue);
+      this.insuranceSnapshot.set(this.shipmentInsuranceKey(shipment), shipment.insuredValue);
+    });
+  }
+
+  onInsuranceModelChange(value: any, shipment: Shipments)
+  {
+    shipment.insuredValue = this.normalizeInsuredValue(value);
+  }
+
+  onInsuranceBlur(shipment: Shipments)
+  {
+    shipment.insuredValue = this.normalizeInsuredValue(shipment.insuredValue);
+    const key = this.shipmentInsuranceKey(shipment);
+    const originalValue = this.insuranceSnapshot.get(key);
+    if (originalValue === shipment.insuredValue)
+      return;
+
+    this.service
+      .update(
+        'orders/updateInsurance',
+        {
+            "tableName": shipment.tableName,
+            "id": shipment.id,
+            "insuredValue": shipment.insuredValue
+        }
+      )
+      .subscribe(
+        (res: HttpResponse<any>)=>{
+          console.log(res);
+          this.insuranceSnapshot.set(key, shipment.insuredValue);
+        }
+      );
   }
 
   changeShipmentVisibility(index: number)

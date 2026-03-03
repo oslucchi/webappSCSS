@@ -51,4 +51,6 @@ export class Shipments {
 	consigned: boolean = false;
     elements: ShipmentItem[] = [];
     selected: boolean = false;
+    note = "";
+    insuredValue: number | null = null;
 }

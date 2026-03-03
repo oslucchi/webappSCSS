@@ -61,6 +61,7 @@
         <th id="address">Via</th>
         <th id="province">PV</th>
         <th id="ddt">DDT</th>
+        <th id="insurance">Assicurazione (valore)</th>
         <th id="details">Articoli nella spedizione</th>
     </tr>
     <tr *ngFor="let shipment of shipments; index as i" [ngStyle]="shipment.pickupRequestNo  != null ? { background: '#cf1302', color: '#ffffff' } : null">
@@ -80,9 +81,16 @@
         <td id="address">{{shipment.customerAddress}}</td>
         <td id="province">{{shipment.customerState}}</td>
         <td id="ddt" style='text-align: right;'>{{shipment.shipmentDocumentNo}}</td>
-        <!--
-        <td id="insurance" style='text-align: right;'>{{shipment.insuranceMessage}}</td>
-        -->
+        <td id="insurance" style='text-align: right;'>
+            <input
+                matInput
+                type="text"
+                inputmode="numeric"
+                [ngModel]="shipment.insuredValue == null ? '' : shipment.insuredValue"
+                (ngModelChange)="onInsuranceModelChange($event, shipment)"
+                (blur)="onInsuranceBlur(shipment)"
+                style="width: 90px; text-align: right;">
+        </td>
         <td id="details" style='text-align: left;'>
             <div class="details-container">
                 <ng-container *ngIf="showHideShipment[i]; else elseDetailsVisible">
